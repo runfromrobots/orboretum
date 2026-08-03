@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interactive Map - The Orboretum</title>
+  <meta name="description" content="Interactive trail map of The Orboretum showing hiking routes, waypoints, and points of interest.">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  <style>
+    #map {
+      width: 100%;
+      height: 600px;
+      margin: 2rem 0;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .map-legend {
+      background-color: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+      margin-top: 1rem;
+      max-width: 300px;
+    }
+
+    .legend-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .legend-icon {
+      width: 24px;
+      height: 24px;
+      margin-right: 0.75rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    .legend-item p {
+      margin: 0;
+      font-size: 0.9rem;
+    }
+
+    .trail {
+      border: 3px solid #42b37c;
+    }
+
+    .parking { background-color: #4a7c7e; }
+    .entrance { background-color: #0d2818; }
+    .landmark { background-color: #6b8e6b; }
+    .historic { background-color: #8b4513; }
+    .rest { background-color: #3d7556; }
+    .water { background-color: #1e90ff; }
+    .boundary { background-color: #808080; }
+
+    .popup-content {
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .popup-content h3 {
+      margin-top: 0;
+      color: var(--forest-900);
+      font-size: 1.1rem;
+    }
+
+    .popup-content p {
+      margin: 0.25rem 0;
+      font-size: 0.9rem;
+      color: var(--forest-800);
+    }
+
+    .popup-label {
+      font-weight: 600;
+      color: var(--creek);
+    }
+
+    @media (max-width: 768px) {
+      #map {
+        height: 400px;
+      }
+
+      .map-legend {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <a href="/" class="logo">The Orboretum</a>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="visit.html">Visit</a></li>
+        <li><a href="collections.html">Collections</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Interactive Trail Map</h1>
+        <p>Explore The Orboretum's hiking trails, facilities, and points of interest</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Trails & Waypoints</h2>
+        <p>Click on any trail or waypoint marker to view details. Use the map controls to zoom and pan. The main loop trail covers approximately 1.5 miles through diverse forest ecosystems.</p>
+
+        <div id="map"></div>
+
+        <div class="map-legend">
+          <h3 style="margin-top: 0; margin-bottom: 1rem;">Legend</h3>
+
+          <div class="legend-item">
+            <div class="legend-icon trail" style="width: 30px; height: 6px; border-radius: 3px; background-color: #42b37c;"></div>
+            <p>Hiking Trail</p>
+          </div>
+
+          <div class="legend-item">
+            <div class="legend-icon parking">P</div>
+            <p>Parking</p>
+          </div>
+
+          <div class="legend-item">
+            <div class="legend-icon entrance">→</div>
+            <p>Trail Entrance</p>
+          </div>
+
+          <div class="legend-item">
+            <div class="legend-icon landmark">●</div>
+            <p>Landmark/Vista</p>
+          </div>
+
+          <div class="legend-item">
+            <div class="legend-icon historic">◆</div>
+            <p>Historic Site</p>
+          </div>
+
+          <div class="legend-item">
+            <div class="legend-icon rest">◇</div>
+            <p>Rest Area</p>
+          </div>
+
+          <div class="legend-item">
+            <div class="legend-icon water">≈</div>
+            <p>Water Feature</p>
+          </div>
+
+          <div class="legend-item">
+            <div class="legend-icon boundary">—</div>
+            <p>Boundary</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Map Information</h2>
+        <h3>Trail Details</h3>
+        <ul>
+          <li><strong>Distance:</strong> ~1.5 miles</li>
+          <li><strong>Difficulty:</strong> Moderate</li>
+          <li><strong>Surface:</strong> Stone trail</li>
+          <li><strong>Time:</strong> ~1 hour</li>
+        </ul>
+
+        <h3>Key Features</h3>
+        <ul>
+          <li>Multiple vista points with panoramic views</li>
+          <li>Yatesville Creek overlook</li>
+          <li>Heritage garden area (Maryanne Granger plantings)</li>
+          <li>Historic Revolutionary War era site</li>
+          <li>Multiple rest areas with benches</li>
+        </ul>
+
+        <h3>Getting There</h3>
+        <p><strong>Address:</strong> 472 Anderson Road, Sprakers, NY 12166</p>
+        <p><strong>Parking:</strong> Across the street in tennis/basketball court lot (~20 spaces)</p>
+        <p><strong>What to Bring:</strong> Water, comfortable walking shoes, layers for weather</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>The Orboretum preserves, cultivates, and interprets native and heritage trees on a historically significant landscape in the Mohawk Valley.</p>
+      <div class="footer-bottom">
+        <p>472 Anderson Road, Sprakers, NY</p>
+        <p>&copy; <span id="year">2024</span> The Orboretum</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+  <script>
+    // Initialize map
+    const map = L.map('map').setView([42.886, -74.441], 15);
+
+    // Add base layer (OpenStreetMap)
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+      maxZoom: 19
+    }).addTo(map);
+
+    // Load and display trail data
+    fetch('maps/geojson/trails.geojson')
+      .then(response => response.json())
+      .then(data => {
+        L.geoJSON(data, {
+          style: {
+            color: '#42b37c',
+            weight: 3,
+            opacity: 0.8
+          },
+          onEachFeature: function(feature, layer) {
+            const props = feature.properties;
+            const popup = `
+              <div class="popup-content">
+                <h3>${props.name}</h3>
+                <p><span class="popup-label">Distance:</span> ${props.distance_miles} miles</p>
+                <p><span class="popup-label">Difficulty:</span> ${props.difficulty}</p>
+                <p><span class="popup-label">Surface:</span> ${props.surface}</p>
+                <p>${props.description}</p>
+              </div>
+            `;
+            layer.bindPopup(popup);
+          }
+        }).addTo(map);
+      });
+
+    // Load and display POI data
+    fetch('maps/geojson/pois.geojson')
+      .then(response => response.json())
+      .then(data => {
+        L.geoJSON(data, {
+          pointToLayer: function(feature, latlng) {
+            const props = feature.properties;
+            const typeColors = {
+              'parking': '#4a7c7e',
+              'entrance': '#0d2818',
+              'landmark': '#6b8e6b',
+              'historic': '#8b4513',
+              'rest_area': '#3d7556',
+              'water': '#1e90ff',
+              'boundary': '#808080',
+              'trail_split': '#2d5a47',
+              'waypoint': '#4a7c7e'
+            };
+
+            const color = typeColors[props.type] || '#4a7c7e';
+
+            return L.circleMarker(latlng, {
+              radius: 6,
+              fillColor: color,
+              color: '#fff',
+              weight: 2,
+              opacity: 1,
+              fillOpacity: 0.8
+            });
+          },
+          onEachFeature: function(feature, layer) {
+            const props = feature.properties;
+            let popupContent = `
+              <div class="popup-content">
+                <h3>${props.name}</h3>
+                <p><span class="popup-label">Type:</span> ${props.type.replace('_', ' ')}</p>
+            `;
+
+            if (props.description) {
+              popupContent += `<p>${props.description}</p>`;
+            }
+
+            if (props.amenities) {
+              popupContent += `<p><span class="popup-label">Amenities:</span> ${props.amenities}</p>`;
+            }
+
+            if (props.notes) {
+              popupContent += `<p><span class="popup-label">Notes:</span> ${props.notes}</p>`;
+            }
+
+            popupContent += '</div>';
+            layer.bindPopup(popupContent);
+          }
+        }).addTo(map);
+      });
+
+    // Update footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
