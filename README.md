@@ -17,32 +17,38 @@ This is a brand-new project in its early phases. The website is designed to:
 
 ## Tech Stack
 
-- **Framework:** Next.js 14
-- **Styling:** Tailwind CSS
-- **Language:** TypeScript (pages), CSS
+- **HTML5** with semantic markup
+- **CSS3** for styling (no framework dependencies)
+- **JavaScript** (vanilla) for interactivity
+- **Static site** — no build step required
 
-## Getting Started
+## File Structure
 
-### Prerequisites
-
-- Node.js 18+
-- npm or yarn
-
-### Development
-
-```bash
-npm install
-npm run dev
+```
+index.html          - Home page
+visit.html          - Visit information
+collections.html    - Plant collections
+education.html      - Educational programming
+history.html        - Land acknowledgment and history
+contact.html        - Contact and volunteer info
+styles.css          - Shared styles
+script.js           - Shared JavaScript
+images/             - Images and assets (coming)
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the site in development mode.
+## Local Development
 
-### Production Build (Local Testing)
+Simply open `index.html` in a browser, or run a local server:
 
 ```bash
-npm run build
-npm start
+# Using Python
+python3 -m http.server 8000
+
+# Using Node (http-server)
+npx http-server
 ```
+
+Then visit `http://localhost:8000`
 
 ## Deployment to Vercel
 
@@ -59,7 +65,7 @@ npm start
 
 4. Select "Import Git Repository" and choose `runfromrobots/orboretum`
 
-5. Click "Import" (Vercel auto-detects Next.js)
+5. Click "Import"
 
 6. Click "Deploy"
 
@@ -76,41 +82,22 @@ Every push to GitHub automatically triggers a new deployment on Vercel.
 3. Update your DNS records as instructed by Vercel
 4. Vercel automatically provisions SSL
 
-## Project Structure
-
-```
-/app
-  /layout.tsx        - Root layout with header and footer
-  /page.tsx          - Home page
-  /visit/page.tsx    - Visit information
-  /collections/page.tsx - Plant collections
-  /education/page.tsx - Educational programming
-  /history/page.tsx  - Land acknowledgment and history
-  /contact/page.tsx  - Contact and volunteer info
-  /globals.css       - Tailwind and component styles
-
-/public             - Static assets (coming)
-```
-
 ## Color Palette
 
-- Forest Dark: `#0d2818` (headings, header)
+- Forest Dark: `#0d2818`
 - Forest Medium: `#1a3d2e`
-- Creek/Teal: `#4a7c7e` (accents, links)
-- Moss: `#6b8e6b`
-- Wheat: `#f5f1e8` (background)
+- Creek: `#4a7c7e`
+- Wheat (background): `#f5f1e8`
 
 ## Next Steps
 
-- [ ] Plant directory and map (digital collections)
+- [ ] Add images (hero, collections, team)
+- [ ] Plant directory with details
 - [ ] Event calendar
-- [ ] Research partnership inquiry form
-- [ ] School field trip booking system
-- [ ] Volunteer management
 - [ ] Blog/news updates
-- [ ] High-resolution photography
-- [ ] Donor/supporter section
-- [ ] Accessibility audit and improvements
+- [ ] Donation/support system
+- [ ] Google Analytics
+- [ ] Accessibility audit
 
 ## Contact
 

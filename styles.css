@@ -1,0 +1,280 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --forest-900: #0d2818;
+  --forest-800: #1a3d2e;
+  --forest-700: #2d5a47;
+  --forest-600: #3d7556;
+  --moss: #6b8e6b;
+  --creek: #4a7c7e;
+  --wheat: #f5f1e8;
+  --spacing: 1rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--wheat);
+  color: var(--forest-900);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 60rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Header */
+header {
+  background-color: var(--forest-900);
+  color: var(--wheat);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.5rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--wheat);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav a {
+  color: var(--wheat);
+  text-decoration: none;
+  transition: color 0.2s;
+  font-size: 0.95rem;
+}
+
+nav a:hover {
+  color: var(--creek);
+}
+
+/* Hero Section */
+.hero {
+  background-color: var(--forest-800);
+  color: var(--wheat);
+  padding: 4rem 1.5rem;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  font-weight: 700;
+}
+
+.hero p {
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  max-width: 45rem;
+  margin-left: auto;
+  margin-right: auto;
+  opacity: 0.95;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* Buttons */
+.btn {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: var(--creek);
+  color: var(--wheat);
+}
+
+.btn-primary:hover {
+  background-color: var(--forest-800);
+}
+
+.btn-secondary {
+  background-color: var(--forest-900);
+  color: var(--wheat);
+}
+
+.btn-secondary:hover {
+  background-color: var(--forest-700);
+}
+
+/* Sections */
+section {
+  padding: 3rem 1.5rem;
+}
+
+section h2 {
+  font-size: 2.25rem;
+  margin-bottom: 1.5rem;
+  color: var(--forest-900);
+  font-weight: 700;
+}
+
+section h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--forest-800);
+  margin-top: 1.5rem;
+  font-weight: 600;
+}
+
+section p {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+  color: var(--forest-800);
+  margin-bottom: 1rem;
+}
+
+section ul {
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+section li {
+  margin-bottom: 0.5rem;
+  color: var(--forest-800);
+}
+
+section a {
+  color: var(--creek);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+section a:hover {
+  text-decoration: underline;
+}
+
+/* Alternating sections */
+section:nth-child(even) {
+  background-color: #f0f4f0;
+}
+
+/* Grid layouts */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.card h3 {
+  margin-top: 0;
+  color: var(--creek);
+}
+
+/* Info box */
+.info-box {
+  background-color: var(--wheat);
+  border-left: 4px solid var(--creek);
+  padding: 1.5rem;
+  margin: 1.5rem 0;
+}
+
+/* Footer */
+footer {
+  background-color: var(--forest-900);
+  color: var(--wheat);
+  padding: 3rem 1.5rem;
+  margin-top: 2rem;
+}
+
+footer p {
+  color: var(--wheat);
+  margin-bottom: 1rem;
+  font-size: 0.95rem;
+}
+
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--forest-700);
+  padding-top: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-bottom p {
+  font-size: 0.875rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  nav ul {
+    gap: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  section h2 {
+    font-size: 1.75rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+  }
+}
