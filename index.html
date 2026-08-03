@@ -6,6 +6,63 @@
   <title>The Orboretum</title>
   <meta name="description" content="A new arboretum preserving and cultivating native and heritage trees in the Mohawk Valley, NY.">
   <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  <style>
+    #hero-map {
+      width: 100%;
+      height: 600px;
+      margin: 2rem 0;
+      border-radius: 0.5rem;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .map-hero-section {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .map-hero-content {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
+      padding: 2rem;
+      background: linear-gradient(to bottom, rgba(13, 40, 24, 0.9), rgba(13, 40, 24, 0));
+    }
+
+    .map-hero-content h1 {
+      color: #f5f1e8;
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    .map-hero-content p {
+      color: #c9cdc1;
+      margin: 0.5rem 0 1.5rem 0;
+      max-width: 600px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 0;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      #hero-map {
+        height: 400px;
+      }
+
+      .map-hero-content h1 {
+        font-size: 1.8rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+      }
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -23,9 +80,10 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="container">
+    <!-- Hero Section with Interactive Map -->
+    <section class="map-hero-section">
+      <div id="hero-map"></div>
+      <div class="map-hero-content">
         <h1>The Orboretum</h1>
         <p>A new arboretum preserving and cultivating native and heritage trees on a historically significant landscape in the Mohawk Valley.</p>
         <div class="hero-actions">
@@ -84,6 +142,45 @@
     </div>
   </footer>
 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script src="script.js"></script>
+  <script>
+    // Initialize hero map
+    const heroMap = L.map('hero-map').setView([42.886, -74.441], 15);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors',
+      maxZoom: 19
+    }).addTo(heroMap);
+
+    // Load and display trail data
+    fetch('maps/geojson/trails.geojson')
+      .then(response => response.json())
+      .then(data => {
+        L.geoJSON(data, {
+          style: {
+            color: '#42b37c',
+            weight: 3,
+            opacity: 0.8
+          }
+        }).addTo(heroMap);
+      });
+
+    // Load and display property boundaries
+    fetch('maps/geojson/boundaries.geojson')
+      .then(response => response.json())
+      .then(data => {
+        L.geoJSON(data, {
+          style: {
+            color: '#808080',
+            weight: 2,
+            opacity: 0.6,
+            fillColor: '#f5f1e8',
+            fillOpacity: 0.1,
+            dashArray: '5, 5'
+          }
+        }).addTo(heroMap);
+      });
+  </script>
 </body>
 </html>

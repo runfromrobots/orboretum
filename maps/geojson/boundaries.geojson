@@ -4,10 +4,36 @@
     {
       "type": "Feature",
       "properties": {
-        "name": "The Orboretum Property",
+        "name": "MK total 2",
+        "type": "property",
+        "description": "Across-the-street property section"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [-74.44102, 42.886615],
+          [-74.4418507, 42.8851192],
+          [-74.4419178, 42.8848637],
+          [-74.441915, 42.884703],
+          [-74.441279, 42.884434],
+          [-74.440925, 42.884019],
+          [-74.441161, 42.883647],
+          [-74.439077, 42.881016],
+          [-74.437121, 42.881877],
+          [-74.438578, 42.885411],
+          [-74.434465, 42.886861],
+          [-74.434961, 42.887513],
+          [-74.44102, 42.886615]
+        ]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "MK Total",
         "type": "property",
         "acres": 200,
-        "description": "The Orboretum 200-acre property boundary"
+        "description": "The Orboretum main 200-acre property boundary"
       },
       "geometry": {
         "type": "Polygon",
