@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plant Collection Database - The Orboretum</title>
+  <meta name="description" content="Browse The Orboretum's documented plant collection, organized by scientific name and observation date.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .collection-controls {
+      margin: 2rem 0;
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .search-box {
+      flex: 1;
+      min-width: 250px;
+      padding: 0.75rem 1rem;
+      border: 2px solid var(--creek);
+      border-radius: 0.5rem;
+      font-size: 1rem;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .search-box:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(74, 124, 126, 0.2);
+    }
+
+    .filter-controls {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1rem;
+      background-color: #f0f4f0;
+      border: 2px solid var(--forest-700);
+      border-radius: 0.5rem;
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+
+    .filter-btn.active {
+      background-color: var(--creek);
+      color: white;
+      border-color: var(--creek);
+    }
+
+    .collection-stats {
+      background-color: var(--forest-800);
+      color: var(--wheat);
+      padding: 1.5rem;
+      border-radius: 0.5rem;
+      margin-bottom: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .stat {
+      text-align: center;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--creek);
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      opacity: 0.9;
+      margin-top: 0.5rem;
+    }
+
+    .accessions-list {
+      display: grid;
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .accession-card {
+      background-color: white;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: box-shadow 0.2s;
+      border-left: 4px solid var(--creek);
+    }
+
+    .accession-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+
+    .accession-header {
+      padding: 1.5rem;
+      background-color: #f9f9f9;
+      border-bottom: 1px solid #e0e0e0;
+    }
+
+    .accession-id {
+      font-size: 0.85rem;
+      color: var(--creek);
+      font-weight: 700;
+      font-family: IBM Plex Mono, monospace;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .scientific-name {
+      font-size: 1.1rem;
+      font-style: italic;
+      color: var(--forest-900);
+      margin: 0.5rem 0;
+    }
+
+    .common-name {
+      font-size: 1rem;
+      color: var(--forest-800);
+      margin: 0.25rem 0;
+    }
+
+    .accession-body {
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+
+    .accession-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .meta-item {
+      font-size: 0.95rem;
+    }
+
+    .meta-label {
+      font-weight: 600;
+      color: var(--creek);
+      display: inline;
+    }
+
+    .meta-value {
+      color: var(--forest-800);
+      display: inline;
+    }
+
+    .accession-photos {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .photo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 0.75rem;
+    }
+
+    .photo-thumbnail {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 0.25rem;
+      overflow: hidden;
+      background-color: #f0f4f0;
+    }
+
+    .photo-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .accession-link {
+      padding: 1rem 1.5rem;
+      background-color: #f9f9f9;
+      border-top: 1px solid #e0e0e0;
+      text-align: center;
+    }
+
+    .accession-link a {
+      color: var(--creek);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .accession-link a:hover {
+      text-decoration: underline;
+    }
+
+    .no-results {
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: var(--forest-800);
+    }
+
+    .no-results p {
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .collection-controls {
+        flex-direction: column;
+      }
+
+      .search-box {
+        min-width: 100%;
+      }
+
+      .accession-body {
+        grid-template-columns: 1fr;
+      }
+
+      .collection-stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <a href="/" class="logo">The Orboretum</a>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="visit.html">Visit</a></li>
+        <li><a href="collections.html">Collections</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <h1>Plant Collection Database</h1>
+        <p>Documented plant accessions from The Orboretum, sourced from field observations</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="collection-stats">
+          <div class="stat">
+            <div class="stat-number" id="total-accessions">0</div>
+            <div class="stat-label">Total Accessions</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number" id="unique-species">0</div>
+            <div class="stat-label">Unique Species</div>
+          </div>
+          <div class="stat">
+            <div class="stat-number" id="last-updated">—</div>
+            <div class="stat-label">Last Updated</div>
+          </div>
+        </div>
+
+        <div class="collection-controls">
+          <input
+            type="text"
+            class="search-box"
+            id="search-input"
+            placeholder="Search by name or accession ID..."
+          >
+          <div class="filter-controls">
+            <button class="filter-btn active" data-filter="all">All</button>
+            <button class="filter-btn" data-filter="photos">With Photos</button>
+          </div>
+        </div>
+
+        <div id="accessions-container"></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>About This Database</h2>
+        <p>This plant collection database is automatically updated from observations logged via <a href="https://www.inaturalist.org/places/the-orboretum">iNaturalist</a>. Each observation becomes an accession record in our formal collection, providing scientific documentation and tracking for The Orboretum's living plant collection.</p>
+        <p><strong>Data Quality:</strong> Observations must be identified plants (taxa rank: genus or species) to be included. This data supports our ArbNet Level 1 accreditation and helps us manage our 200-acre living collections.</p>
+        <p><a href="https://www.inaturalist.org/places/the-orboretum">View all observations on iNaturalist →</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>The Orboretum preserves, cultivates, and interprets native and heritage trees on a historically significant landscape in the Mohawk Valley.</p>
+      <div class="footer-bottom">
+        <p>472 Anderson Road, Sprakers, NY</p>
+        <p>&copy; <span id="year">2024</span> The Orboretum</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    let allAccessions = [];
+    let filteredAccessions = [];
+
+    async function loadAccessions() {
+      try {
+        const response = await fetch('data/plant-accessions.json');
+        const data = await response.json();
+
+        allAccessions = data.accessions || [];
+        filteredAccessions = [...allAccessions];
+
+        // Update stats
+        document.getElementById('total-accessions').textContent = allAccessions.length;
+
+        const uniqueSpecies = new Set(
+          allAccessions
+            .map(a => a.scientific_name)
+            .filter(name => name)
+        );
+        document.getElementById('unique-species').textContent = uniqueSpecies.size;
+
+        const lastUpdated = new Date(data.metadata.last_updated);
+        document.getElementById('last-updated').textContent =
+          lastUpdated.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+        renderAccessions();
+      } catch (error) {
+        console.error('Error loading accessions:', error);
+        document.getElementById('accessions-container').innerHTML =
+          '<div class="no-results"><p>Error loading collection data.</p></div>';
+      }
+    }
+
+    function renderAccessions() {
+      const container = document.getElementById('accessions-container');
+
+      if (filteredAccessions.length === 0) {
+        container.innerHTML = '<div class="no-results"><p>No accessions match your search.</p></div>';
+        return;
+      }
+
+      container.innerHTML = filteredAccessions
+        .map(acc => `
+          <div class="accession-card">
+            <div class="accession-header">
+              <div class="accession-id">${acc.accession_id}</div>
+              <div class="scientific-name">${acc.scientific_name || 'Unknown'}</div>
+              <div class="common-name">${acc.common_name || ''}</div>
+            </div>
+            <div class="accession-body">
+              <div class="accession-meta">
+                <div class="meta-item">
+                  <span class="meta-label">Observed:</span>
+                  <span class="meta-value">${acc.observed_date || 'Unknown'}</span>
+                </div>
+                <div class="meta-item">
+                  <span class="meta-label">Observer:</span>
+                  <span class="meta-value">${acc.observer || 'Unknown'}</span>
+                </div>
+                ${acc.place_guess ? `
+                  <div class="meta-item">
+                    <span class="meta-label">Location:</span>
+                    <span class="meta-value">${acc.place_guess}</span>
+                  </div>
+                ` : ''}
+                <div class="meta-item">
+                  <span class="meta-label">Taxa Rank:</span>
+                  <span class="meta-value">${acc.taxa_rank || 'Unknown'}</span>
+                </div>
+              </div>
+              ${acc.photos.length > 0 ? `
+                <div class="accession-photos">
+                  <div class="meta-label">Photos:</div>
+                  <div class="photo-grid">
+                    ${acc.photos.map(photo => `
+                      <div class="photo-thumbnail">
+                        <img src="${photo.square_url}" alt="Photo" onerror="this.parentElement.style.background='#e0e0e0'">
+                      </div>
+                    `).join('')}
+                  </div>
+                </div>
+              ` : ''}
+            </div>
+            <div class="accession-link">
+              <a href="${acc.inaturalist_url}" target="_blank">View on iNaturalist</a>
+            </div>
+          </div>
+        `).join('');
+    }
+
+    document.getElementById('search-input').addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      filterAccessions(query);
+    });
+
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        e.target.classList.add('active');
+        filterAccessions(document.getElementById('search-input').value.toLowerCase());
+      });
+    });
+
+    function filterAccessions(query) {
+      const filterType = document.querySelector('.filter-btn.active').dataset.filter;
+
+      filteredAccessions = allAccessions.filter(acc => {
+        const matchesQuery = !query ||
+          acc.scientific_name.toLowerCase().includes(query) ||
+          acc.common_name?.toLowerCase().includes(query) ||
+          acc.accession_id.toLowerCase().includes(query);
+
+        const matchesFilter = filterType === 'all' ||
+          (filterType === 'photos' && acc.photos.length > 0);
+
+        return matchesQuery && matchesFilter;
+      });
+
+      renderAccessions();
+    }
+
+    // Load accessions when page loads
+    loadAccessions();
+  </script>
+</body>
+</html>
