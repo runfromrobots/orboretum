@@ -6,63 +6,6 @@
   <title>The Orboretum</title>
   <meta name="description" content="A new arboretum preserving and cultivating native and heritage trees in the Mohawk Valley, NY.">
   <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
-  <style>
-    #hero-map {
-      width: 100%;
-      height: 600px;
-      margin: 2rem 0;
-      border-radius: 0.5rem;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-
-    .map-hero-section {
-      position: relative;
-      overflow: hidden;
-    }
-
-    .map-hero-content {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      z-index: 10;
-      padding: 2rem;
-      background: linear-gradient(to bottom, rgba(13, 40, 24, 0.9), rgba(13, 40, 24, 0));
-    }
-
-    .map-hero-content h1 {
-      color: #f5f1e8;
-      margin: 0;
-      font-size: 2.5rem;
-    }
-
-    .map-hero-content p {
-      color: #c9cdc1;
-      margin: 0.5rem 0 1.5rem 0;
-      max-width: 600px;
-    }
-
-    .hero-actions {
-      display: flex;
-      gap: 0;
-      margin-top: 1rem;
-    }
-
-    @media (max-width: 768px) {
-      #hero-map {
-        height: 400px;
-      }
-
-      .map-hero-content h1 {
-        font-size: 1.8rem;
-      }
-
-      .hero-actions {
-        flex-direction: column;
-      }
-    }
-  </style>
 </head>
 <body>
   <header>
@@ -80,10 +23,9 @@
   </header>
 
   <main>
-    <!-- Hero Section with Interactive Map -->
-    <section class="map-hero-section">
-      <div id="hero-map"></div>
-      <div class="map-hero-content">
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container">
         <h1>The Orboretum</h1>
         <p>A new arboretum preserving and cultivating native and heritage trees on a historically significant landscape in the Mohawk Valley.</p>
         <div class="hero-actions">
@@ -101,22 +43,87 @@
       </div>
     </section>
 
-    <!-- What to Expect -->
+    <!-- What to Expect - Featured Imagery -->
     <section>
       <div class="container">
         <h2>What to Expect</h2>
-        <div class="grid">
-          <div class="card">
+
+        <div class="featured-section">
+          <div class="featured-image">
+            <img src="images/trails-landscape.jpg" alt="Forest trails" onerror="this.parentElement.style.background='#f0f4f0'">
+          </div>
+          <div class="featured-content">
             <h3>Trails & Landscape</h3>
             <p>Approximately 1.5 miles of stone trails wind through the 200-acre property, connecting you to diverse forest ecosystems and historically significant plantings.</p>
+            <p><a href="visit.html">Plan your walk →</a></p>
           </div>
-          <div class="card">
+        </div>
+
+        <div class="featured-section" style="direction: rtl;">
+          <div class="featured-image">
+            <img src="images/living-collections.jpg" alt="Living plant collections" onerror="this.parentElement.style.background='#f0f4f0'">
+          </div>
+          <div class="featured-content" style="direction: ltr;">
             <h3>Living Collections</h3>
             <p>Explore native species, heritage cultivars from mid-century gardens, and educational plantings chosen to illustrate ecological concepts and regional history.</p>
+            <p><a href="collections.html">Explore collections →</a></p>
           </div>
-          <div class="card">
+        </div>
+
+        <div class="featured-section">
+          <div class="featured-image">
+            <img src="images/history-interpretation.jpg" alt="Historical interpretation" onerror="this.parentElement.style.background='#f0f4f0'">
+          </div>
+          <div class="featured-content">
             <h3>History & Interpretation</h3>
             <p>Discover four layers of history: pre-colonial Mohawk territory, Revolutionary War era, mid-20th century horticulture, and six decades of conservation stewardship.</p>
+            <p><a href="history.html">Learn the story →</a></p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Gallery -->
+    <section>
+      <div class="container">
+        <h2>Explore the Landscape</h2>
+        <p>A visual journey through The Orboretum's diverse ecosystems and seasonal beauty.</p>
+        <div class="gallery">
+          <div class="gallery-item">
+            <img src="images/landscape-01.jpg" alt="Landscape view" onerror="this.parentElement.style.background='#f0f4f0'">
+            <div class="gallery-item-overlay">
+              <h4>Diverse Ecosystems</h4>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/landscape-02.jpg" alt="Trail view" onerror="this.parentElement.style.background='#f0f4f0'">
+            <div class="gallery-item-overlay">
+              <h4>Stone Trails</h4>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/landscape-03.jpg" alt="Natural features" onerror="this.parentElement.style.background='#f0f4f0'">
+            <div class="gallery-item-overlay">
+              <h4>Natural Features</h4>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/landscape-04.jpg" alt="Seasonal view" onerror="this.parentElement.style.background='#f0f4f0'">
+            <div class="gallery-item-overlay">
+              <h4>Seasonal Changes</h4>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/landscape-05.jpg" alt="Trees and light" onerror="this.parentElement.style.background='#f0f4f0'">
+            <div class="gallery-item-overlay">
+              <h4>Light & Shadow</h4>
+            </div>
+          </div>
+          <div class="gallery-item">
+            <img src="images/landscape-06.jpg" alt="Forest detail" onerror="this.parentElement.style.background='#f0f4f0'">
+            <div class="gallery-item-overlay">
+              <h4>Forest Details</h4>
+            </div>
           </div>
         </div>
       </div>
@@ -142,45 +149,6 @@
     </div>
   </footer>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script src="script.js"></script>
-  <script>
-    // Initialize hero map
-    const heroMap = L.map('hero-map').setView([42.886, -74.441], 15);
-
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      attribution: '© OpenStreetMap contributors',
-      maxZoom: 19
-    }).addTo(heroMap);
-
-    // Load and display trail data
-    fetch('maps/geojson/trails.geojson')
-      .then(response => response.json())
-      .then(data => {
-        L.geoJSON(data, {
-          style: {
-            color: '#42b37c',
-            weight: 3,
-            opacity: 0.8
-          }
-        }).addTo(heroMap);
-      });
-
-    // Load and display property boundaries
-    fetch('maps/geojson/boundaries.geojson')
-      .then(response => response.json())
-      .then(data => {
-        L.geoJSON(data, {
-          style: {
-            color: '#808080',
-            weight: 2,
-            opacity: 0.6,
-            fillColor: '#f5f1e8',
-            fillOpacity: 0.1,
-            dashArray: '5, 5'
-          }
-        }).addTo(heroMap);
-      });
-  </script>
 </body>
 </html>
