@@ -27,7 +27,6 @@ This is a brand-new project in its early phases. The website is designed to:
 
 - Node.js 18+
 - npm or yarn
-- Docker & Docker Compose (for deployment)
 
 ### Development
 
@@ -45,65 +44,37 @@ npm run build
 npm start
 ```
 
-## Deployment
+## Deployment to Vercel
 
-### Via Docker Compose (Recommended)
+### One-Time Setup
 
-```bash
-docker-compose up -d
-```
-
-This starts both the Next.js app and Nginx reverse proxy. Site is accessible on port 80.
-
-### On VPS (Hetzner / DigitalOcean)
-
-1. **SSH into your server**
+1. Push code to GitHub
    ```bash
-   ssh user@your-vps-ip
+   git push origin claude/orboretum-level-1-accreditation-fwcfj3
    ```
 
-2. **Clone the repository**
-   ```bash
-   git clone https://github.com/runfromrobots/orboretum.git
-   cd orboretum
-   git checkout claude/orboretum-level-1-accreditation-fwcfj3
-   ```
+2. Go to https://vercel.com and sign in
 
-3. **Configure environment (if needed)**
-   ```bash
-   cp .env.example .env.local
-   # Edit .env.local with your settings
-   ```
+3. Click "Add New..." → "Project"
 
-4. **Start with Docker Compose**
-   ```bash
-   docker-compose up -d
-   ```
+4. Select "Import Git Repository" and choose `runfromrobots/orboretum`
 
-5. **Set up SSL (Let's Encrypt)**
-   ```bash
-   sudo apt-get install certbot python3-certbot-nginx
-   sudo certbot certonly --standalone -d theorboretum.org -d www.theorboretum.org
-   ```
+5. Click "Import" (Vercel auto-detects Next.js)
 
-6. **Update nginx.conf** with SSL certificate paths and uncomment the HTTPS server block
+6. Click "Deploy"
 
-7. **Restart Nginx**
-   ```bash
-   docker-compose restart nginx
-   ```
+Your site is now live at `https://orboretum.vercel.app`
 
-### Logs
+### Automatic Deployment
 
-View application logs:
-```bash
-docker-compose logs -f app
-```
+Every push to GitHub automatically triggers a new deployment on Vercel.
 
-View Nginx logs:
-```bash
-docker-compose logs -f nginx
-```
+### Custom Domain (Optional)
+
+1. In your Vercel project settings, go to "Domains"
+2. Add your domain (e.g., `theorboretum.org`)
+3. Update your DNS records as instructed by Vercel
+4. Vercel automatically provisions SSL
 
 ## Project Structure
 
