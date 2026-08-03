@@ -23,31 +23,6 @@
       height: 100%;
     }
 
-    .map-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: rgba(0,0,0,0.3);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1000;
-      pointer-events: none;
-      border-radius: 0.5rem;
-    }
-
-    .map-overlay.hidden {
-      display: none;
-    }
-
-    .map-overlay-content {
-      text-align: center;
-      pointer-events: auto;
-      color: var(--wheat);
-      font-size: 1.1rem;
-    }
 
     .map-controls {
       position: absolute;
@@ -183,11 +158,6 @@
       <div class="container">
         <div class="map-container">
           <div id="map"></div>
-          <div class="map-overlay" id="mapOverlay">
-            <div class="map-overlay-content">
-              <p>👆 Click to explore the map</p>
-            </div>
-          </div>
 
           <div class="map-controls">
             <h3>Map Layers</h3>
@@ -259,11 +229,7 @@
     let allObservations = [];
 
     function initMap() {
-      mapInstance = L.map('map', {
-        scrollWheelZoom: false,
-        dragging: false,
-        tap: false
-      }).setView([42.886, -74.441], 15);
+      mapInstance = L.map('map').setView([42.886, -74.441], 15);
 
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap contributors',
@@ -387,14 +353,6 @@
         }
       });
 
-      // Click-to-interact
-      const mapOverlay = document.getElementById('mapOverlay');
-      document.getElementById('map').addEventListener('click', function() {
-        mapInstance.scrollWheelZoom.enable();
-        mapInstance.dragging.enable();
-        mapInstance.tap.enable();
-        mapOverlay.classList.add('hidden');
-      });
     }
 
     // Initialize when page loads

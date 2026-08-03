@@ -179,11 +179,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script src="script.js"></script>
   <script>
-    const visitMap = L.map('visit-map', {
-      scrollWheelZoom: false,
-      dragging: false,
-      tap: false
-    }).setView([42.886, -74.441], 15);
+    const visitMap = L.map('visit-map').setView([42.886, -74.441], 15);
 
     L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '© OpenStreetMap contributors',
@@ -218,19 +214,6 @@
           }
         }).addTo(visitMap);
       });
-
-    // Click-to-interact functionality
-    const mapOverlay = document.getElementById('mapOverlay');
-    const mapElement = document.getElementById('visit-map');
-
-    mapElement.addEventListener('click', function() {
-      if (!visitMap.dragging._dragging) {
-        visitMap.scrollWheelZoom.enable();
-        visitMap.dragging.enable();
-        visitMap.tap.enable();
-        mapOverlay.classList.add('hidden');
-      }
-    });
   </script>
 </body>
 </html>

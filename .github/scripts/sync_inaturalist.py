@@ -43,6 +43,12 @@ def observation_to_accession(obs):
     # Build accession ID from observation ID
     accession_id = f"ORB-{obs['id']}"
 
+    # Skip observations without coordinates (private or imprecise)
+    latitude = obs.get('latitude')
+    longitude = obs.get('longitude')
+    if latitude is None or longitude is None:
+        return None
+
     return {
         "accession_id": accession_id,
         "inaturalist_id": obs['id'],
@@ -52,8 +58,8 @@ def observation_to_accession(obs):
         "taxa_rank": taxon.get('rank', 'species'),
         "observed_date": obs.get('observed_on', ''),
         "added_date": datetime.now().isoformat(),
-        "latitude": obs.get('latitude'),
-        "longitude": obs.get('longitude'),
+        "latitude": latitude,
+        "longitude": longitude,
         "place_guess": obs.get('place_guess', ''),
         "observer": obs.get('user', {}).get('login', 'Unknown'),
         "photos": [
@@ -122,8 +128,9 @@ def main():
 
         for obs in obs_list:
             acc = observation_to_accession(obs)
-            all_accessions[obs['id']] = acc
-            total_fetched += 1
+            if acc is not None:  # Only include observations with coordinates
+                all_accessions[obs['id']] = acc
+                total_fetched += 1
 
         page += 1
 
