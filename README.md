@@ -27,26 +27,82 @@ This is a brand-new project in its early phases. The website is designed to:
 
 - Node.js 18+
 - npm or yarn
-
-### Installation
-
-```bash
-npm install
-```
+- Docker & Docker Compose (for deployment)
 
 ### Development
 
 ```bash
+npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to view the site.
+Open [http://localhost:3000](http://localhost:3000) to view the site in development mode.
 
-### Build & Deploy
+### Production Build (Local Testing)
 
 ```bash
 npm run build
 npm start
+```
+
+## Deployment
+
+### Via Docker Compose (Recommended)
+
+```bash
+docker-compose up -d
+```
+
+This starts both the Next.js app and Nginx reverse proxy. Site is accessible on port 80.
+
+### On VPS (Hetzner / DigitalOcean)
+
+1. **SSH into your server**
+   ```bash
+   ssh user@your-vps-ip
+   ```
+
+2. **Clone the repository**
+   ```bash
+   git clone https://github.com/runfromrobots/orboretum.git
+   cd orboretum
+   git checkout claude/orboretum-level-1-accreditation-fwcfj3
+   ```
+
+3. **Configure environment (if needed)**
+   ```bash
+   cp .env.example .env.local
+   # Edit .env.local with your settings
+   ```
+
+4. **Start with Docker Compose**
+   ```bash
+   docker-compose up -d
+   ```
+
+5. **Set up SSL (Let's Encrypt)**
+   ```bash
+   sudo apt-get install certbot python3-certbot-nginx
+   sudo certbot certonly --standalone -d theorboretum.org -d www.theorboretum.org
+   ```
+
+6. **Update nginx.conf** with SSL certificate paths and uncomment the HTTPS server block
+
+7. **Restart Nginx**
+   ```bash
+   docker-compose restart nginx
+   ```
+
+### Logs
+
+View application logs:
+```bash
+docker-compose logs -f app
+```
+
+View Nginx logs:
+```bash
+docker-compose logs -f nginx
 ```
 
 ## Project Structure
