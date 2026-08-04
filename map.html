@@ -173,6 +173,14 @@
               <input type="checkbox" id="observations-toggle" checked>
               <label for="observations-toggle">Plant Observations</label>
             </div>
+            <div class="layer-toggle">
+              <input type="checkbox" id="features-toggle" checked>
+              <label for="features-toggle">Features</label>
+            </div>
+            <div class="layer-toggle">
+              <input type="checkbox" id="parcels-toggle" checked>
+              <label for="parcels-toggle">Arboretum Parcels</label>
+            </div>
           </div>
 
           <div class="legend">
@@ -188,6 +196,14 @@
             <div class="legend-item">
               <div class="legend-color" style="background-color: #2196F3;"></div>
               <span>Plant Observation</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background-color: #9B59B6; border: 1px solid #8B4A96;"></div>
+              <span>Features (Parking, Cemetery)</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background-color: #E67E22; border: 1px solid #D35400;"></div>
+              <span>Arboretum Parcels</span>
             </div>
             <div class="observation-count">
               <strong><span id="obs-count">0</span> observations documented</strong>
@@ -225,8 +241,35 @@
   <script src="script.js"></script>
   <script>
     let mapInstance;
-    let trailLayer, boundaryLayer, observationsLayer;
+    let trailLayer, boundaryLayer, observationsLayer, featuresLayer, featuresLabels, parcelsLayer, parcelsLabels;
     let allObservations = [];
+
+    // Helper function to calculate polygon center
+    function getPolygonCenter(coords) {
+      let x = 0, y = 0, count = 0;
+      if (coords[0][0].length === 2) {
+        coords[0].forEach(point => {
+          x += point[0];
+          y += point[1];
+          count++;
+        });
+      } else {
+        coords.forEach(ring => {
+          ring.forEach(point => {
+            x += point[0];
+            y += point[1];
+            count++;
+          });
+        });
+      }
+      return [y / count, x / count];
+    }
+
+    // Helper function to calculate line center
+    function getLineCenter(coords) {
+      const mid = Math.floor(coords.length / 2);
+      return [coords[mid][1], coords[mid][0]];
+    }
 
     function initMap() {
       mapInstance = L.map('map').setView([42.886, -74.441], 15);
@@ -262,6 +305,69 @@
               fillOpacity: 0.12
             }
           }).addTo(mapInstance);
+        });
+
+      // Load features (parking, cemetery, proposed trail)
+      fetch('maps/geojson/features.geojson')
+        .then(response => response.json())
+        .then(data => {
+          featuresLayer = L.geoJSON(data, {
+            style: {
+              color: '#9B59B6',
+              weight: 2,
+              opacity: 0.7,
+              fillColor: '#9B59B6',
+              fillOpacity: 0.15
+            }
+          }).addTo(mapInstance);
+
+          // Add labels
+          featuresLabels = L.featureGroup().addTo(mapInstance);
+          data.features.forEach(feature => {
+            const props = feature.properties;
+            let center;
+            if (feature.geometry.type === 'LineString') {
+              center = getLineCenter(feature.geometry.coordinates);
+            } else {
+              center = getPolygonCenter(feature.geometry.coordinates);
+            }
+
+            const label = L.marker(center, {
+              icon: L.divIcon({
+                html: `<div style="background: white; padding: 2px 6px; border-radius: 3px; font-size: 12px; font-weight: bold; border: 1px solid #9B59B6; white-space: nowrap;">${props.name}</div>`,
+                iconSize: [null, null]
+              })
+            }).addTo(featuresLabels);
+          });
+        });
+
+      // Load arboretum parcels
+      fetch('maps/geojson/arboretum-parcels.geojson')
+        .then(response => response.json())
+        .then(data => {
+          parcelsLayer = L.geoJSON(data, {
+            style: {
+              color: '#E67E22',
+              weight: 2.5,
+              opacity: 0.8,
+              fillColor: '#E67E22',
+              fillOpacity: 0.2
+            }
+          }).addTo(mapInstance);
+
+          // Add labels
+          parcelsLabels = L.featureGroup().addTo(mapInstance);
+          data.features.forEach(feature => {
+            const props = feature.properties;
+            const center = getPolygonCenter(feature.geometry.coordinates);
+
+            const label = L.marker(center, {
+              icon: L.divIcon({
+                html: `<div style="background: white; padding: 2px 6px; border-radius: 3px; font-size: 12px; font-weight: bold; border: 1px solid #E67E22; white-space: nowrap;">${props.name}</div>`,
+                iconSize: [null, null]
+              })
+            }).addTo(parcelsLabels);
+          });
         });
 
       // Load plant observations
@@ -348,6 +454,30 @@
             mapInstance.addLayer(observationsLayer);
           } else {
             mapInstance.removeLayer(observationsLayer);
+          }
+        }
+      });
+
+      document.getElementById('features-toggle').addEventListener('change', (e) => {
+        if (featuresLayer) {
+          if (e.target.checked) {
+            mapInstance.addLayer(featuresLayer);
+            mapInstance.addLayer(featuresLabels);
+          } else {
+            mapInstance.removeLayer(featuresLayer);
+            mapInstance.removeLayer(featuresLabels);
+          }
+        }
+      });
+
+      document.getElementById('parcels-toggle').addEventListener('change', (e) => {
+        if (parcelsLayer) {
+          if (e.target.checked) {
+            mapInstance.addLayer(parcelsLayer);
+            mapInstance.addLayer(parcelsLabels);
+          } else {
+            mapInstance.removeLayer(parcelsLayer);
+            mapInstance.removeLayer(parcelsLabels);
           }
         }
       });
