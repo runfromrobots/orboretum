@@ -173,6 +173,10 @@
               <input type="checkbox" id="observations-toggle" checked>
               <label for="observations-toggle">Plant Observations</label>
             </div>
+            <div class="layer-toggle">
+              <input type="checkbox" id="sales-toggle" checked>
+              <label for="sales-toggle">Prospective Sales</label>
+            </div>
           </div>
 
           <div class="legend">
@@ -188,6 +192,10 @@
             <div class="legend-item">
               <div class="legend-color" style="background-color: #2196F3;"></div>
               <span>Plant Observation</span>
+            </div>
+            <div class="legend-item">
+              <div class="legend-color" style="background-color: #FF9500;"></div>
+              <span>Prospective Sales</span>
             </div>
             <div class="observation-count">
               <strong><span id="obs-count">0</span> observations documented</strong>
@@ -225,7 +233,7 @@
   <script src="script.js"></script>
   <script>
     let mapInstance;
-    let trailLayer, boundaryLayer, observationsLayer;
+    let trailLayer, boundaryLayer, observationsLayer, salesLayer;
     let allObservations = [];
 
     function initMap() {
@@ -261,6 +269,34 @@
               fillColor: '#f5f1e8',
               fillOpacity: 0.1,
               dashArray: '5, 5'
+            }
+          }).addTo(mapInstance);
+        });
+
+      // Load prospective sales parcels
+      fetch('maps/geojson/prospective-sales.geojson')
+        .then(response => response.json())
+        .then(data => {
+          salesLayer = L.geoJSON(data, {
+            style: {
+              color: '#FF9500',
+              weight: 2.5,
+              opacity: 0.9,
+              fillColor: '#FF9500',
+              fillOpacity: 0.3
+            },
+            onEachFeature: (feature, layer) => {
+              const props = feature.properties;
+              const popupContent = `
+                <div style="font-family: 'DM Sans', sans-serif;">
+                  <strong>${props.name}</strong><br>
+                  <small style="color: #666;">
+                    For: ${props.recipient}<br>
+                    ${props.description ? 'Details: ' + props.description : ''}
+                  </small>
+                </div>
+              `;
+              layer.bindPopup(popupContent);
             }
           }).addTo(mapInstance);
         });
@@ -349,6 +385,16 @@
             mapInstance.addLayer(observationsLayer);
           } else {
             mapInstance.removeLayer(observationsLayer);
+          }
+        }
+      });
+
+      document.getElementById('sales-toggle').addEventListener('change', (e) => {
+        if (salesLayer) {
+          if (e.target.checked) {
+            mapInstance.addLayer(salesLayer);
+          } else {
+            mapInstance.removeLayer(salesLayer);
           }
         }
       });
