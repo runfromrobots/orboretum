@@ -173,14 +173,6 @@
               <input type="checkbox" id="observations-toggle" checked>
               <label for="observations-toggle">Plant Observations</label>
             </div>
-            <div class="layer-toggle">
-              <input type="checkbox" id="sales-toggle" checked>
-              <label for="sales-toggle">Prospective Sales</label>
-            </div>
-            <div class="layer-toggle">
-              <input type="checkbox" id="retained-toggle" checked>
-              <label for="retained-toggle">Retained Land</label>
-            </div>
           </div>
 
           <div class="legend">
@@ -196,14 +188,6 @@
             <div class="legend-item">
               <div class="legend-color" style="background-color: #2196F3;"></div>
               <span>Plant Observation</span>
-            </div>
-            <div class="legend-item">
-              <div class="legend-color" style="background-color: #B8B8B8;"></div>
-              <span>Prospective Sales</span>
-            </div>
-            <div class="legend-item">
-              <div class="legend-color" style="background-color: #2d7a5d;"></div>
-              <span>Retained Land</span>
             </div>
             <div class="observation-count">
               <strong><span id="obs-count">0</span> observations documented</strong>
@@ -241,7 +225,7 @@
   <script src="script.js"></script>
   <script>
     let mapInstance;
-    let trailLayer, boundaryLayer, observationsLayer, salesLayer, retainedLayer;
+    let trailLayer, boundaryLayer, observationsLayer;
     let allObservations = [];
 
     function initMap() {
@@ -276,39 +260,6 @@
               opacity: 0.85,
               fillColor: '#4a7c7e',
               fillOpacity: 0.12
-            }
-          }).addTo(mapInstance);
-        });
-
-      // Load prospective sales parcels
-      fetch('maps/geojson/prospective-sales.geojson')
-        .then(response => response.json())
-        .then(data => {
-          salesLayer = L.geoJSON(data, {
-            style: {
-              color: '#B8B8B8',
-              weight: 2,
-              opacity: 0.4,
-              fillColor: '#B8B8B8',
-              fillOpacity: 0.08
-            },
-            onEachFeature: (feature, layer) => {
-              layer.bindPopup('<div style="font-family: \'DM Sans\', sans-serif;"><strong>Intended for close friends</strong></div>');
-            }
-          }).addTo(mapInstance);
-        });
-
-      // Load retained land
-      fetch('maps/geojson/retained-land.geojson')
-        .then(response => response.json())
-        .then(data => {
-          retainedLayer = L.geoJSON(data, {
-            style: {
-              color: '#2d7a5d',
-              weight: 2,
-              opacity: 0.7,
-              fillColor: '#2d7a5d',
-              fillOpacity: 0.15
             }
           }).addTo(mapInstance);
         });
@@ -401,25 +352,6 @@
         }
       });
 
-      document.getElementById('sales-toggle').addEventListener('change', (e) => {
-        if (salesLayer) {
-          if (e.target.checked) {
-            mapInstance.addLayer(salesLayer);
-          } else {
-            mapInstance.removeLayer(salesLayer);
-          }
-        }
-      });
-
-      document.getElementById('retained-toggle').addEventListener('change', (e) => {
-        if (retainedLayer) {
-          if (e.target.checked) {
-            mapInstance.addLayer(retainedLayer);
-          } else {
-            mapInstance.removeLayer(retainedLayer);
-          }
-        }
-      });
 
     }
 
