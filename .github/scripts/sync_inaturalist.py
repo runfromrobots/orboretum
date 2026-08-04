@@ -43,9 +43,16 @@ def observation_to_accession(obs):
     # Build accession ID from observation ID
     accession_id = f"ORB-{obs['id']}"
 
-    # Skip observations without coordinates (private or imprecise)
-    latitude = obs.get('latitude')
-    longitude = obs.get('longitude')
+    # Extract coordinates from geojson field (GeoJSON format is [longitude, latitude])
+    geojson = obs.get('geojson', {})
+    coords = geojson.get('coordinates')
+    if coords and len(coords) >= 2:
+        longitude, latitude = coords[0], coords[1]
+    else:
+        latitude = obs.get('latitude')
+        longitude = obs.get('longitude')
+
+    # Skip observations without coordinates
     if latitude is None or longitude is None:
         return None
 
