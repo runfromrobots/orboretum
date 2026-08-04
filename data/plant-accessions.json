@@ -2,12 +2,207 @@
   "metadata": {
     "name": "The Orboretum Plant Collection",
     "description": "Living plant collection documented via iNaturalist",
-    "last_updated": "2026-08-04T17:36:19.327224",
+    "last_updated": "2026-08-04T19:44:47.576340",
     "place_id": 237476,
     "place_url": "https://www.inaturalist.org/places/237476",
-    "total_accessions": 13
+    "total_accessions": 22
   },
   "accessions": [
+    {
+      "accession_id": "ORB-388262515",
+      "inaturalist_id": 388262515,
+      "inaturalist_url": "https://www.inaturalist.org/observations/388262515",
+      "common_name": "fall phlox",
+      "scientific_name": "Phlox paniculata",
+      "taxa_rank": "species",
+      "observed_date": "2026-08-04",
+      "added_date": "2026-08-04T19:44:42.493973",
+      "latitude": 42.8847007751,
+      "longitude": -74.4423446655,
+      "place_guess": "Sprakers",
+      "observer": "mudportal",
+      "photos": [],
+      "description": null,
+      "quality_grade": "casual"
+    },
+    {
+      "accession_id": "ORB-388262294",
+      "inaturalist_id": 388262294,
+      "inaturalist_url": "https://www.inaturalist.org/observations/388262294",
+      "common_name": "Heathers, Balsams, Primroses, and Allies",
+      "scientific_name": "Ericales",
+      "taxa_rank": "order",
+      "observed_date": "2026-08-04",
+      "added_date": "2026-08-04T19:44:42.493993",
+      "latitude": 42.8847122192,
+      "longitude": -74.4423904419,
+      "place_guess": "Sprakers",
+      "observer": "mudportal",
+      "photos": [
+        {
+          "url": "https://static.inaturalist.org/photos/711073903/medium.jpg",
+          "square_url": "https://static.inaturalist.org/photos/711073903/square.jpg",
+          "original_url": "https://static.inaturalist.org/photos/711073903/original.jpg"
+        }
+      ],
+      "description": null,
+      "quality_grade": "needs_id"
+    },
+    {
+      "accession_id": "ORB-388262183",
+      "inaturalist_id": 388262183,
+      "inaturalist_url": "https://www.inaturalist.org/observations/388262183",
+      "common_name": "black cohosh",
+      "scientific_name": "Actaea racemosa",
+      "taxa_rank": "species",
+      "observed_date": "2026-08-04",
+      "added_date": "2026-08-04T19:44:42.494000",
+      "latitude": 42.8847579956,
+      "longitude": -74.4422149658,
+      "place_guess": "Sprakers",
+      "observer": "mudportal",
+      "photos": [
+        {
+          "url": "https://static.inaturalist.org/photos/711073621/medium.jpg",
+          "square_url": "https://static.inaturalist.org/photos/711073621/square.jpg",
+          "original_url": "https://static.inaturalist.org/photos/711073621/original.jpg"
+        }
+      ],
+      "description": null,
+      "quality_grade": "needs_id"
+    },
+    {
+      "accession_id": "ORB-388262120",
+      "inaturalist_id": 388262120,
+      "inaturalist_url": "https://www.inaturalist.org/observations/388262120",
+      "common_name": "ostrich fern",
+      "scientific_name": "Matteuccia struthiopteris",
+      "taxa_rank": "species",
+      "observed_date": "2026-08-04",
+      "added_date": "2026-08-04T19:44:42.494005",
+      "latitude": 42.8847160339,
+      "longitude": -74.4422302246,
+      "place_guess": "Sprakers",
+      "observer": "mudportal",
+      "photos": [
+        {
+          "url": "https://static.inaturalist.org/photos/711073575/medium.jpg",
+          "square_url": "https://static.inaturalist.org/photos/711073575/square.jpg",
+          "original_url": "https://static.inaturalist.org/photos/711073575/original.jpg"
+        }
+      ],
+      "description": null,
+      "quality_grade": "needs_id"
+    },
+    {
+      "accession_id": "ORB-388262029",
+      "inaturalist_id": 388262029,
+      "inaturalist_url": "https://www.inaturalist.org/observations/388262029",
+      "common_name": "wild geranium",
+      "scientific_name": "Geranium maculatum",
+      "taxa_rank": "species",
+      "observed_date": "2026-08-04",
+      "added_date": "2026-08-04T19:44:42.494009",
+      "latitude": 42.8847312927,
+      "longitude": -74.4421920776,
+      "place_guess": "Sprakers",
+      "observer": "mudportal",
+      "photos": [
+        {
+          "url": "https://static.inaturalist.org/photos/711073453/medium.jpg",
+          "square_url": "https://static.inaturalist.org/photos/711073453/square.jpg",
+          "original_url": "https://static.inaturalist.org/photos/711073453/original.jpg"
+        }
+      ],
+      "description": null,
+      "quality_grade": "needs_id"
+    },
+    {
+      "accession_id": "ORB-388261940",
+      "inaturalist_id": 388261940,
+      "inaturalist_url": "https://www.inaturalist.org/observations/388261940",
+      "common_name": "Panicle Hydrangea",
+      "scientific_name": "Hydrangea paniculata",
+      "taxa_rank": "species",
+      "observed_date": "2026-08-04",
+      "added_date": "2026-08-04T19:44:42.494014",
+      "latitude": 42.8848648071,
+      "longitude": -74.4423904419,
+      "place_guess": "Sprakers",
+      "observer": "mudportal",
+      "photos": [
+        {
+          "url": "https://static.inaturalist.org/photos/711073234/medium.jpg",
+          "square_url": "https://static.inaturalist.org/photos/711073234/square.jpg",
+          "original_url": "https://static.inaturalist.org/photos/711073234/original.jpg"
+        }
+      ],
+      "description": null,
+      "quality_grade": "needs_id"
+    },
+    {
+      "accession_id": "ORB-388261841",
+      "inaturalist_id": 388261841,
+      "inaturalist_url": "https://www.inaturalist.org/observations/388261841",
+      "common_name": "staghorn sumac",
+      "scientific_name": "Rhus typhina",
+      "taxa_rank": "species",
+      "observed_date": "2026-08-04",
+      "added_date": "2026-08-04T19:44:42.494021",
+      "latitude": 42.8849639893,
+      "longitude": -74.4426116943,
+      "place_guess": "Sprakers",
+      "observer": "mudportal",
+      "photos": [
+        {
+          "url": "https://static.inaturalist.org/photos/711073070/medium.jpg",
+          "square_url": "https://static.inaturalist.org/photos/711073070/square.jpg",
+          "original_url": "https://static.inaturalist.org/photos/711073070/original.jpg"
+        }
+      ],
+      "description": null,
+      "quality_grade": "needs_id"
+    },
+    {
+      "accession_id": "ORB-388261742",
+      "inaturalist_id": 388261742,
+      "inaturalist_url": "https://www.inaturalist.org/observations/388261742",
+      "common_name": "common hibiscus",
+      "scientific_name": "Hibiscus syriacus",
+      "taxa_rank": "species",
+      "observed_date": "2026-08-04",
+      "added_date": "2026-08-04T19:44:42.494030",
+      "latitude": 42.8849754333,
+      "longitude": -74.4426269531,
+      "place_guess": "Montgomery County, US-NY, US",
+      "observer": "mudportal",
+      "photos": [
+        {
+          "url": "https://static.inaturalist.org/photos/711072795/medium.jpg",
+          "square_url": "https://static.inaturalist.org/photos/711072795/square.jpg",
+          "original_url": "https://static.inaturalist.org/photos/711072795/original.jpg"
+        }
+      ],
+      "description": null,
+      "quality_grade": "needs_id"
+    },
+    {
+      "accession_id": "ORB-388255856",
+      "inaturalist_id": 388255856,
+      "inaturalist_url": "https://www.inaturalist.org/observations/388255856",
+      "common_name": "apple",
+      "scientific_name": "Malus domestica",
+      "taxa_rank": "species",
+      "observed_date": "2026-08-04",
+      "added_date": "2026-08-04T19:44:42.494035",
+      "latitude": 42.8845481873,
+      "longitude": -74.4445571899,
+      "place_guess": "Sprakers",
+      "observer": "mudportal",
+      "photos": [],
+      "description": null,
+      "quality_grade": "casual"
+    },
     {
       "accession_id": "ORB-388006345",
       "inaturalist_id": 388006345,
@@ -16,14 +211,20 @@
       "scientific_name": "Acer negundo",
       "taxa_rank": "species",
       "observed_date": "2026-08-03",
-      "added_date": "2026-08-04T17:36:18.777166",
+      "added_date": "2026-08-04T19:44:42.494041",
       "latitude": 42.884727478,
       "longitude": -74.4424057007,
       "place_guess": "Sprakers",
       "observer": "mudportal",
-      "photos": [],
+      "photos": [
+        {
+          "url": "https://static.inaturalist.org/photos/711061339/medium.jpg",
+          "square_url": "https://static.inaturalist.org/photos/711061339/square.jpg",
+          "original_url": "https://static.inaturalist.org/photos/711061339/original.jpg"
+        }
+      ],
       "description": null,
-      "quality_grade": "casual"
+      "quality_grade": "needs_id"
     },
     {
       "accession_id": "ORB-379714744",
@@ -33,7 +234,7 @@
       "scientific_name": "Scirpus atrovirens",
       "taxa_rank": "species",
       "observed_date": "2026-07-08",
-      "added_date": "2026-08-04T17:36:18.777202",
+      "added_date": "2026-08-04T19:44:42.494045",
       "latitude": 42.8871650696,
       "longitude": -74.4413452148,
       "place_guess": "Montgomery County, US-NY, US",
@@ -50,7 +251,7 @@
       "scientific_name": "Cirsium palustre",
       "taxa_rank": "species",
       "observed_date": "2026-07-08",
-      "added_date": "2026-08-04T17:36:18.777209",
+      "added_date": "2026-08-04T19:44:42.494048",
       "latitude": 42.8871765137,
       "longitude": -74.4413146973,
       "place_guess": "Montgomery County, US-NY, US",
@@ -67,7 +268,7 @@
       "scientific_name": "Lysimachia nummularia",
       "taxa_rank": "species",
       "observed_date": "2026-06-25",
-      "added_date": "2026-08-04T17:36:18.777214",
+      "added_date": "2026-08-04T19:44:42.494051",
       "latitude": 42.8862419128,
       "longitude": -74.4412231445,
       "place_guess": "Sprakers",
@@ -90,7 +291,7 @@
       "scientific_name": "Monarda didyma",
       "taxa_rank": "species",
       "observed_date": "2026-06-23",
-      "added_date": "2026-08-04T17:36:18.777221",
+      "added_date": "2026-08-04T19:44:42.494054",
       "latitude": 42.8846664429,
       "longitude": -74.4424438477,
       "place_guess": "Sprakers",
@@ -113,7 +314,7 @@
       "scientific_name": "Symphyotrichum novae-angliae",
       "taxa_rank": "species",
       "observed_date": "2025-09-18",
-      "added_date": "2026-08-04T17:36:18.777229",
+      "added_date": "2026-08-04T19:44:42.494058",
       "latitude": 42.8846740723,
       "longitude": -74.4423675537,
       "place_guess": "Montgomery County, US-NY, US",
@@ -136,7 +337,7 @@
       "scientific_name": "Typha latifolia",
       "taxa_rank": "species",
       "observed_date": "2025-08-31",
-      "added_date": "2026-08-04T17:36:18.777238",
+      "added_date": "2026-08-04T19:44:42.494061",
       "latitude": 42.8843383789,
       "longitude": -74.4463577271,
       "place_guess": "Sprakers",
@@ -159,7 +360,7 @@
       "scientific_name": "Scirpus cyperinus",
       "taxa_rank": "species",
       "observed_date": "2025-08-28",
-      "added_date": "2026-08-04T17:36:18.777250",
+      "added_date": "2026-08-04T19:44:42.494064",
       "latitude": 42.8837890625,
       "longitude": -74.4473495483,
       "place_guess": "Sprakers",
@@ -182,7 +383,7 @@
       "scientific_name": "Vitis riparia",
       "taxa_rank": "species",
       "observed_date": "2025-08-11",
-      "added_date": "2026-08-04T17:36:18.777258",
+      "added_date": "2026-08-04T19:44:42.494069",
       "latitude": 42.8850097656,
       "longitude": -74.4412155151,
       "place_guess": "Sprakers",
@@ -205,7 +406,7 @@
       "scientific_name": "Lythrum salicaria",
       "taxa_rank": "species",
       "observed_date": "2025-08-08",
-      "added_date": "2026-08-04T17:36:18.777263",
+      "added_date": "2026-08-04T19:44:42.494072",
       "latitude": 42.8846435547,
       "longitude": -74.4423599243,
       "place_guess": "Sprakers",
@@ -228,7 +429,7 @@
       "scientific_name": "Sonchus asper",
       "taxa_rank": "species",
       "observed_date": "2025-07-01",
-      "added_date": "2026-08-04T17:36:18.777269",
+      "added_date": "2026-08-04T19:44:42.494077",
       "latitude": 42.8846740723,
       "longitude": -74.4423446655,
       "place_guess": "Sprakers",
@@ -251,7 +452,7 @@
       "scientific_name": "Lotus corniculatus",
       "taxa_rank": "species",
       "observed_date": "2025-06-27",
-      "added_date": "2026-08-04T17:36:18.777274",
+      "added_date": "2026-08-04T19:44:42.494080",
       "latitude": 42.8846435547,
       "longitude": -74.4423446655,
       "place_guess": "Sprakers",
@@ -274,7 +475,7 @@
       "scientific_name": "Geranium",
       "taxa_rank": "genus",
       "observed_date": "2024-09-09",
-      "added_date": "2026-08-04T17:36:18.777280",
+      "added_date": "2026-08-04T19:44:42.494084",
       "latitude": 42.884765625,
       "longitude": -74.4422683716,
       "place_guess": "Sprakers",
