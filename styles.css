@@ -102,19 +102,21 @@ nav a:hover {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 0s ease-in-out;
 }
 
 .hero-image.active {
   opacity: 1;
-  animation: fadeInOut 8s ease-in-out infinite;
+  animation: fadeInOut 16s ease-in-out infinite;
+}
+
+.hero-image:nth-child(2).active {
+  animation-delay: 8s;
 }
 
 @keyframes fadeInOut {
-  0% { opacity: 0; }
-  10% { opacity: 1; }
-  45% { opacity: 1; }
-  55% { opacity: 0; }
+  0% { opacity: 1; }
+  43% { opacity: 1; }
+  57% { opacity: 0; }
   100% { opacity: 0; }
 }
 
@@ -131,6 +133,7 @@ nav a:hover {
   font-size: 3rem;
   margin-bottom: 1rem;
   font-weight: 700;
+  color: #ffffff;
 }
 
 .hero p {
@@ -139,6 +142,7 @@ nav a:hover {
   max-width: 45rem;
   margin-left: auto;
   margin-right: auto;
+  color: #ffffff;
   opacity: 0.95;
 }
 
