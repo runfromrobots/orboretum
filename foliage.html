@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fall Foliage Guide - The Joan Vermeulen Arboretum</title>
+  <meta name="description" content="Plan your visit during peak fall foliage season at The Joan Vermeulen Arboretum. View live foliage forecasts, tree color change timing, and best viewing trails.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <nav class="container">
+      <a href="/" class="logo">The Joan Vermeulen Arboretum</a>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="visit.html">Visit</a></li>
+        <li><a href="map.html">Map</a></li>
+        <li><a href="foliage.html">Fall Foliage</a></li>
+        <li><a href="collections.html">Collections</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-carousel">
+        <img src="images/autumn-water-feature.jpg" alt="Autumn foliage at The Joan Vermeulen Arboretum" class="hero-image active">
+        <img src="images/fall-foliage-hero.jpg" alt="Fall colors in the forest" class="hero-image" style="opacity:0;">
+      </div>
+      <div class="hero-overlay">
+        <div class="container">
+          <h1>Fall Foliage Guide</h1>
+          <p>Experience the dramatic transformation of our 200-acre landscape as native trees display their brilliant seasonal colors.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Foliage Status Widget -->
+    <section class="foliage-status-section">
+      <div class="container">
+        <h2>Current Foliage Status</h2>
+        <div class="foliage-widget">
+          <div class="foliage-status-card">
+            <div class="foliage-status-header">
+              <h3>2024 Fall Foliage Forecast</h3>
+              <p class="foliage-last-updated">Last updated: <span id="forecast-date">October 2024</span></p>
+            </div>
+            <div class="foliage-progress">
+              <div class="foliage-progress-bar">
+                <div class="foliage-progress-fill" id="foliage-progress-fill" style="width: 0%;"></div>
+              </div>
+              <div class="foliage-progress-labels">
+                <span>Below Average</span>
+                <span>Peak</span>
+                <span>Past Peak</span>
+              </div>
+            </div>
+            <div class="foliage-info-grid">
+              <div class="foliage-info-item">
+                <span class="foliage-label">Expected Peak:</span>
+                <span class="foliage-value" id="peak-dates">October 15-25</span>
+              </div>
+              <div class="foliage-info-item">
+                <span class="foliage-label">Current Stage:</span>
+                <span class="foliage-value" id="current-stage">Early Color</span>
+              </div>
+            </div>
+            <p class="foliage-description" id="foliage-description">
+              The forecast is regularly updated. Check back often for the latest conditions and plan your visit during peak color.
+            </p>
+          </div>
+          <div class="foliage-tip">
+            <h4>💡 Best Time to Visit</h4>
+            <p>Peak foliage typically occurs in mid-to-late October. The combination of cool nights and sunny days brings out the most vibrant colors. Visit on a clear day for the best viewing experience.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Tree Species & Color Timing -->
+    <section>
+      <div class="container">
+        <h2>Tree Species & Color Change Timeline</h2>
+        <p>Different native species change color at different times. Here's when to expect color from key trees in our collection:</p>
+
+        <div class="timeline-container">
+          <div class="timeline-item timeline-early">
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-content">
+              <h3>Early September - Early October</h3>
+              <div class="species-list">
+                <div class="species-item">
+                  <strong>Ash</strong> - Golden yellow, orange
+                </div>
+                <div class="species-item">
+                  <strong>Dogwood</strong> - Burgundy red
+                </div>
+                <div class="species-item">
+                  <strong>Tupelo</strong> - Scarlet red
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item timeline-mid">
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-content">
+              <h3>Mid-October (Peak Season)</h3>
+              <div class="species-list">
+                <div class="species-item">
+                  <strong>Maple</strong> - Brilliant red and orange
+                </div>
+                <div class="species-item">
+                  <strong>Birch</strong> - Golden yellow
+                </div>
+                <div class="species-item">
+                  <strong>Oak</strong> - Burgundy and rust
+                </div>
+                <div class="species-item">
+                  <strong>Cherry</strong> - Deep red and purple
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item timeline-late">
+            <div class="timeline-marker">
+              <div class="timeline-dot"></div>
+            </div>
+            <div class="timeline-content">
+              <h3>Late October - November</h3>
+              <div class="species-list">
+                <div class="species-item">
+                  <strong>Beech</strong> - Bronze and copper
+                </div>
+                <div class="species-item">
+                  <strong>Hickory</strong> - Golden bronze
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Best Viewing Trails -->
+    <section>
+      <div class="container">
+        <h2>Best Viewing Trails</h2>
+        <p>These trails offer the most diverse views of our native tree collections during fall foliage season:</p>
+
+        <div class="grid">
+          <div class="card">
+            <h3>Upper Loop Trail</h3>
+            <p>The most scenic of our trails, winding through diverse native plantings. Approximately 1 mile, moderate difficulty.</p>
+            <p><strong>Best for:</strong> Peak foliage viewing, photography</p>
+            <p><strong>Highlights:</strong> Mixed hardwoods, creek crossing, historic grove plantings</p>
+          </div>
+
+          <div class="card">
+            <h3>Water Feature Trail</h3>
+            <p>Shorter, easier walk with water views and surrounding forest. Approximately 0.5 miles, easy.</p>
+            <p><strong>Best for:</strong> Family visits, reflection photography</p>
+            <p><strong>Highlights:</strong> Pond views, water features, riparian trees</p>
+          </div>
+
+          <div class="card">
+            <h3>Historic Grove Walk</h3>
+            <p>Explores mid-century ornamental plantings with interpretive value. Approximately 0.75 miles, easy to moderate.</p>
+            <p><strong>Best for:</strong> Heritage cultivars, planted collections</p>
+            <p><strong>Highlights:</strong> Unusual cultivars, rare specimens, historical context</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Foliage Photography Tips -->
+    <section>
+      <div class="container">
+        <h2>Photography & Viewing Tips</h2>
+
+        <div class="info-box">
+          <h3>Capture the Best Colors</h3>
+          <ul>
+            <li><strong>Timing matters:</strong> Visit on clear, sunny days for the most vibrant colors. Overcast days can mute the display.</li>
+            <li><strong>Backlighting:</strong> Position yourself with the sun behind the trees to see the colors glow with transmitted light.</li>
+            <li><strong>Golden hours:</strong> Early morning and late afternoon provide the warmest light for photography.</li>
+            <li><strong>Weather:</strong> Slight wind can help showcase foliage movement while still maintaining good viewing conditions.</li>
+          </ul>
+        </div>
+
+        <div class="info-box">
+          <h3>What to Bring</h3>
+          <ul>
+            <li>Comfortable walking shoes for trail exploration</li>
+            <li>Camera or smartphone for capturing the beauty</li>
+            <li>Layered clothing (mornings can be cool, afternoons warmer)</li>
+            <li>Water and snacks for the trails</li>
+            <li>Field guide to trees (optional, to identify species)</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Fall Foliage Happens -->
+    <section>
+      <div class="container">
+        <h2>The Science of Foliage</h2>
+        <p>Fall color is nature's finale—a brief but brilliant display caused by the changing seasons. Here's what happens:</p>
+
+        <h3>How Trees Change Color</h3>
+        <p>As days shorten and temperatures drop, trees sense it's time to prepare for winter. They begin to shut down food production in their leaves. This triggers a dramatic chemical shift:</p>
+        <ul>
+          <li><strong>Chlorophyll breaks down:</strong> The green pigment that powers photosynthesis disappears, revealing colors hidden beneath.</li>
+          <li><strong>Yellow and orange appear:</strong> Carotenoid pigments become visible, creating bright yellows and oranges in species like birches and aspens.</li>
+          <li><strong>Reds develop:</strong> Anthocyanin pigments form in some species (maples, dogwoods) when sunny days and cold nights occur together.</li>
+          <li><strong>Browns emerge:</strong> Tannins create russet and bronze tones in oaks and other species.</li>
+        </ul>
+
+        <h3>Why Timing Varies</h3>
+        <p>Different species respond to seasonal cues at different times and rates. Ash trees may start changing color in early September, while some oak species hold their color well into November. Temperature, moisture, and sunlight all influence the exact timing and intensity of the display each year.</p>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section>
+      <div class="container">
+        <h2>Plan Your Fall Visit</h2>
+        <p>Experience the Joan Vermeulen Arboretum's spectacular fall foliage display. Our 1.5 miles of trails provide diverse viewing opportunities through native and heritage tree collections.</p>
+        <div class="hero-actions">
+          <a href="visit.html" class="btn btn-primary">Visitor Information</a>
+          <a href="map.html" class="btn btn-secondary">View the Map</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>The Joan Vermeulen Arboretum preserves, cultivates, and interprets native and heritage trees on a historically significant landscape in the Mohawk Valley.</p>
+      <div class="footer-bottom">
+        <p>472 Anderson Road, Sprakers, NY</p>
+        <p>&copy; <span id="year">2024</span> The Joan Vermeulen Arboretum</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+  <script>
+    // Initialize foliage widget with placeholder data
+    function initFoliageWidget() {
+      // This will be replaced with real API data when available
+      const placeholderData = {
+        peakDates: "October 15-25, 2024",
+        currentStage: "Early Color",
+        progressPercentage: 25,
+        description: "Trees are beginning to show fall colors. Check back regularly for updates as conditions develop."
+      };
+
+      document.getElementById('peak-dates').textContent = placeholderData.peakDates;
+      document.getElementById('current-stage').textContent = placeholderData.currentStage;
+      document.getElementById('foliage-progress-fill').style.width = placeholderData.progressPercentage + '%';
+      document.getElementById('foliage-description').textContent = placeholderData.description;
+
+      // Update the date
+      const now = new Date();
+      document.getElementById('forecast-date').textContent = now.toLocaleDateString('en-US', {
+        month: 'long',
+        year: 'numeric'
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', initFoliageWidget);
+  </script>
+</body>
+</html>

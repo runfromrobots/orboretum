@@ -462,6 +462,206 @@ footer p {
   margin-top: 0;
 }
 
+/* Foliage Widget Styles */
+.foliage-status-section {
+  background-color: #f0f4f0;
+}
+
+.foliage-widget {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.foliage-status-card {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border-left: 4px solid var(--creek);
+}
+
+.foliage-status-header {
+  margin-bottom: 1.5rem;
+}
+
+.foliage-status-header h3 {
+  margin: 0 0 0.5rem 0;
+  color: var(--forest-900);
+}
+
+.foliage-last-updated {
+  font-size: 0.875rem;
+  color: var(--moss);
+  margin: 0;
+}
+
+.foliage-progress {
+  margin: 1.5rem 0;
+}
+
+.foliage-progress-bar {
+  height: 24px;
+  background-color: #e0e8e0;
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+}
+
+.foliage-progress-fill {
+  height: 100%;
+  background: linear-gradient(to right, var(--forest-700), var(--creek));
+  transition: width 0.3s ease;
+}
+
+.foliage-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--moss);
+}
+
+.foliage-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.foliage-info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.foliage-label {
+  font-size: 0.875rem;
+  color: var(--moss);
+  font-weight: 500;
+}
+
+.foliage-value {
+  font-size: 1.125rem;
+  color: var(--forest-900);
+  font-weight: 600;
+}
+
+.foliage-description {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--forest-800);
+  margin: 1rem 0 0 0;
+}
+
+.foliage-tip {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  border-left: 4px solid var(--forest-700);
+}
+
+.foliage-tip h4 {
+  margin: 0 0 0.75rem 0;
+  color: var(--forest-900);
+  font-size: 1.1rem;
+}
+
+.foliage-tip p {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--forest-800);
+  line-height: 1.6;
+}
+
+/* Timeline Styles */
+.timeline-container {
+  position: relative;
+  margin: 2rem 0;
+}
+
+.timeline-container::before {
+  content: '';
+  position: absolute;
+  left: 30px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to bottom, var(--creek), var(--forest-700));
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 2rem;
+  padding-left: 80px;
+}
+
+.timeline-marker {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timeline-dot {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background-color: white;
+  border: 3px solid var(--creek);
+  position: relative;
+  z-index: 2;
+}
+
+.timeline-item.timeline-early .timeline-dot {
+  border-color: var(--forest-700);
+  background-color: var(--forest-700);
+}
+
+.timeline-item.timeline-mid .timeline-dot {
+  border-color: var(--creek);
+  background-color: var(--creek);
+  width: 24px;
+  height: 24px;
+}
+
+.timeline-item.timeline-late .timeline-dot {
+  border-color: var(--moss);
+  background-color: var(--moss);
+}
+
+.timeline-content {
+  background-color: white;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.timeline-content h3 {
+  margin-top: 0;
+  color: var(--creek);
+}
+
+.species-list {
+  margin: 1rem 0 0 0;
+}
+
+.species-item {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #e0e8e0;
+  font-size: 0.95rem;
+  color: var(--forest-800);
+}
+
+.species-item:last-child {
+  border-bottom: none;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   nav ul {
@@ -514,5 +714,26 @@ footer p {
 
   .hero-image-content h2 {
     font-size: 1.75rem;
+  }
+
+  .foliage-widget {
+    grid-template-columns: 1fr;
+  }
+
+  .foliage-info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timeline-container::before {
+    left: 20px;
+  }
+
+  .timeline-item {
+    padding-left: 60px;
+  }
+
+  .timeline-marker {
+    width: 40px;
+    height: 40px;
   }
 }
