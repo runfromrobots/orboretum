@@ -111,6 +111,60 @@
       border-top: 1px solid #e0e0e0;
     }
 
+    /* Leaflet layer control styling */
+    .leaflet-control-layers {
+      background-color: white;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      border: none;
+      font-family: 'DM Sans', sans-serif;
+    }
+
+    .leaflet-control-layers-toggle {
+      background-color: #f5f1e8;
+      width: 36px;
+      height: 36px;
+      border-radius: 0.25rem;
+      border: 2px solid var(--forest-900);
+    }
+
+    .leaflet-control-layers-toggle:hover {
+      background-color: var(--forest-950);
+      border-color: var(--forest-800);
+    }
+
+    .leaflet-control-layers-list {
+      padding: 0.5rem;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .leaflet-control-layers label {
+      display: flex;
+      align-items: center;
+      margin-bottom: 0.5rem;
+      cursor: pointer;
+      color: var(--forest-900);
+      font-size: 0.9rem;
+    }
+
+    .leaflet-control-layers input {
+      margin-right: 0.5rem;
+      cursor: pointer;
+      width: 16px;
+      height: 16px;
+    }
+
+    .leaflet-control-layers input:focus {
+      outline: 2px solid var(--creek-800);
+      outline-offset: 2px;
+    }
+
+    .leaflet-control-layers-separator {
+      border-top: 1px solid #e0e0e0;
+      margin: 0.5rem 0;
+    }
+
     @media (max-width: 768px) {
       .map-container {
         height: 500px;
@@ -163,6 +217,9 @@
 
           <div class="map-controls">
             <h2 style="font-size: 1rem; margin: 0 0 1rem 0;">Map Layers</h2>
+            <p style="font-size: 0.85rem; color: var(--forest-900); margin: 0 0 1rem 0; padding: 0.5rem; background: #f0f4f0; border-radius: 3px;">
+              📡 Click the icon at top-left to switch between base map imagery (satellite, topographic, etc.)
+            </p>
             <div class="layer-toggle">
               <input type="checkbox" id="trail-toggle" checked>
               <label for="trail-toggle">Trail Route</label>
@@ -276,10 +333,36 @@
     function initMap() {
       mapInstance = L.map('map').setView([42.886, -74.441], 15);
 
-      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap contributors',
-        maxZoom: 19
-      }).addTo(mapInstance);
+      // Define base layers with multiple satellite imagery sources
+      const baseLayers = {
+        'OpenStreetMap': L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap contributors',
+          maxZoom: 19
+        }),
+        'Satellite Imagery (USGS)': L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSImageryOnly/MapServer/tile/{z}/{y}/{x}', {
+          attribution: '© USGS',
+          maxZoom: 16
+        }),
+        'Satellite (High Res)': L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
+          attribution: '© Esri, DigitalGlobe, Earthstar Geographics',
+          maxZoom: 19
+        }),
+        'USGS Topographic': L.tileLayer('https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}', {
+          attribution: '© USGS',
+          maxZoom: 16
+        }),
+        'Map View (Light)': L.tileLayer('https://tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', {
+          attribution: '© OpenStreetMap contributors',
+          maxZoom: 18
+        })
+      };
+
+      // Add the default base layer
+      baseLayers['Satellite Imagery (USGS)'].addTo(mapInstance);
+
+      // Add layer control to switch between base layers
+      const layerControl = L.control.layers(baseLayers, null, { position: 'topleft', collapsed: true });
+      layerControl.addTo(mapInstance);
 
       // Load trail data
       fetch('maps/geojson/trails.geojson')
