@@ -7,12 +7,32 @@
 }
 
 :root {
-  --forest-900: #0d2818;
-  --forest-800: #1a3d2e;
-  --forest-700: #2d5a47;
-  --forest-600: #3d7556;
-  --moss: #6b8e6b;
-  --creek: #4a7c7e;
+  /* Extended Forest Greens */
+  --forest-1000: #051f10;
+  --forest-950: #0d2818;
+  --forest-900: #1a3d2e;
+  --forest-800: #2d5a47;
+  --forest-700: #3d7556;
+  --forest-600: #5a8f74;
+  --forest-500: #7aa892;
+
+  /* Extended Moss Greens */
+  --moss-900: #465451;
+  --moss-800: #577063;
+  --moss-700: #6b8e6b;
+  --moss-600: #8aaa8a;
+  --moss-500: #b5c8b5;
+
+  /* Extended Creek Teals */
+  --creek-900: #2d4a52;
+  --creek-800: #3a5f68;
+  --creek-700: #4a7c7e;
+  --creek-600: #6b9598;
+  --creek-500: #a0b8bc;
+
+  /* Legacy aliases for compatibility */
+  --moss: #465451;
+  --creek: #2d4a52;
   --wheat: #f5f1e8;
   --spacing: 1rem;
 }
@@ -24,7 +44,7 @@ html {
 body {
   font-family: 'DM Sans', sans-serif;
   background-color: var(--wheat);
-  color: var(--forest-900);
+  color: var(--forest-950);
   line-height: 1.6;
 }
 
@@ -36,7 +56,7 @@ body {
 
 /* Header */
 header {
-  background-color: var(--forest-900);
+  background-color: var(--forest-950);
   color: var(--wheat);
   position: sticky;
   top: 0;
@@ -72,7 +92,7 @@ nav a {
 }
 
 nav a:hover {
-  color: var(--creek);
+  color: var(--creek-700);
 }
 
 /* Hero Section */
@@ -167,21 +187,21 @@ nav a:hover {
 }
 
 .btn-primary {
-  background-color: var(--creek);
+  background-color: var(--creek-800);
   color: var(--wheat);
 }
 
 .btn-primary:hover {
-  background-color: var(--forest-800);
+  background-color: var(--forest-900);
 }
 
 .btn-secondary {
-  background-color: var(--forest-900);
+  background-color: var(--forest-950);
   color: var(--wheat);
 }
 
 .btn-secondary:hover {
-  background-color: var(--forest-700);
+  background-color: var(--forest-800);
 }
 
 /* Sections */
@@ -192,14 +212,14 @@ section {
 section h2 {
   font-size: 2.25rem;
   margin-bottom: 1.5rem;
-  color: var(--forest-900);
+  color: var(--forest-950);
   font-weight: 700;
 }
 
 section h3 {
   font-size: 1.5rem;
   margin-bottom: 1rem;
-  color: var(--forest-800);
+  color: var(--forest-900);
   margin-top: 1.5rem;
   font-weight: 600;
 }
@@ -207,7 +227,7 @@ section h3 {
 section p {
   font-size: 1.0625rem;
   line-height: 1.8;
-  color: var(--forest-800);
+  color: var(--forest-900);
   margin-bottom: 1rem;
 }
 
@@ -218,11 +238,11 @@ section ul {
 
 section li {
   margin-bottom: 0.5rem;
-  color: var(--forest-800);
+  color: var(--forest-900);
 }
 
 section a {
-  color: var(--creek);
+  color: var(--creek-900);
   font-weight: 600;
   text-decoration: none;
 }
@@ -253,20 +273,20 @@ section:nth-child(even) {
 
 .card h3 {
   margin-top: 0;
-  color: var(--creek);
+  color: var(--creek-900);
 }
 
 /* Info box */
 .info-box {
   background-color: var(--wheat);
-  border-left: 4px solid var(--creek);
+  border-left: 4px solid var(--creek-800);
   padding: 1.5rem;
   margin: 1.5rem 0;
 }
 
 /* Footer */
 footer {
-  background-color: var(--forest-900);
+  background-color: var(--forest-950);
   color: var(--wheat);
   padding: 3rem 1.5rem;
   margin-top: 2rem;
@@ -282,7 +302,7 @@ footer p {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-top: 1px solid var(--forest-700);
+  border-top: 1px solid var(--forest-800);
   padding-top: 2rem;
   margin-top: 2rem;
   flex-wrap: wrap;
@@ -458,7 +478,7 @@ footer p {
 }
 
 .featured-content h3 {
-  color: var(--creek);
+  color: var(--creek-900);
   margin-top: 0;
 }
 
@@ -479,7 +499,7 @@ footer p {
   padding: 2rem;
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  border-left: 4px solid var(--creek);
+  border-left: 4px solid var(--creek-800);
 }
 
 .foliage-status-header {
@@ -488,12 +508,12 @@ footer p {
 
 .foliage-status-header h3 {
   margin: 0 0 0.5rem 0;
-  color: var(--forest-900);
+  color: var(--forest-950);
 }
 
 .foliage-last-updated {
   font-size: 0.875rem;
-  color: var(--moss);
+  color: var(--moss-800);
   margin: 0;
 }
 
@@ -511,7 +531,7 @@ footer p {
 
 .foliage-progress-fill {
   height: 100%;
-  background: linear-gradient(to right, var(--forest-700), var(--creek));
+  background: linear-gradient(to right, var(--forest-800), var(--creek-800));
   transition: width 0.3s ease;
 }
 
@@ -519,7 +539,7 @@ footer p {
   display: flex;
   justify-content: space-between;
   font-size: 0.75rem;
-  color: var(--moss);
+  color: var(--moss-800);
 }
 
 .foliage-info-grid {
@@ -537,20 +557,20 @@ footer p {
 
 .foliage-label {
   font-size: 0.875rem;
-  color: var(--moss);
+  color: var(--moss-800);
   font-weight: 500;
 }
 
 .foliage-value {
   font-size: 1.125rem;
-  color: var(--forest-900);
+  color: var(--forest-950);
   font-weight: 600;
 }
 
 .foliage-description {
   font-size: 0.95rem;
   line-height: 1.6;
-  color: var(--forest-800);
+  color: var(--forest-900);
   margin: 1rem 0 0 0;
 }
 
@@ -559,19 +579,19 @@ footer p {
   padding: 1.5rem;
   border-radius: 0.5rem;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-  border-left: 4px solid var(--forest-700);
+  border-left: 4px solid var(--forest-800);
 }
 
 .foliage-tip h4 {
   margin: 0 0 0.75rem 0;
-  color: var(--forest-900);
+  color: var(--forest-950);
   font-size: 1.1rem;
 }
 
 .foliage-tip p {
   margin: 0;
   font-size: 0.95rem;
-  color: var(--forest-800);
+  color: var(--forest-900);
   line-height: 1.6;
 }
 
@@ -588,7 +608,7 @@ footer p {
   top: 0;
   bottom: 0;
   width: 2px;
-  background: linear-gradient(to bottom, var(--creek), var(--forest-700));
+  background: linear-gradient(to bottom, var(--creek-800), var(--forest-800));
 }
 
 .timeline-item {
@@ -613,26 +633,26 @@ footer p {
   height: 20px;
   border-radius: 50%;
   background-color: white;
-  border: 3px solid var(--creek);
+  border: 3px solid var(--creek-800);
   position: relative;
   z-index: 2;
 }
 
 .timeline-item.timeline-early .timeline-dot {
-  border-color: var(--forest-700);
-  background-color: var(--forest-700);
+  border-color: var(--forest-800);
+  background-color: var(--forest-800);
 }
 
 .timeline-item.timeline-mid .timeline-dot {
-  border-color: var(--creek);
-  background-color: var(--creek);
+  border-color: var(--creek-800);
+  background-color: var(--creek-800);
   width: 24px;
   height: 24px;
 }
 
 .timeline-item.timeline-late .timeline-dot {
-  border-color: var(--moss);
-  background-color: var(--moss);
+  border-color: var(--moss-800);
+  background-color: var(--moss-800);
 }
 
 .timeline-content {
@@ -644,7 +664,7 @@ footer p {
 
 .timeline-content h3 {
   margin-top: 0;
-  color: var(--creek);
+  color: var(--creek-900);
 }
 
 .species-list {
@@ -655,7 +675,7 @@ footer p {
   padding: 0.5rem 0;
   border-bottom: 1px solid #e0e8e0;
   font-size: 0.95rem;
-  color: var(--forest-800);
+  color: var(--forest-900);
 }
 
 .species-item:last-child {
