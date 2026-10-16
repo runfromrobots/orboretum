@@ -48,6 +48,50 @@ body {
   line-height: 1.6;
 }
 
+/* Skip to content link */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background-color: var(--forest-950);
+  color: var(--wheat);
+  padding: 0.75rem 1.5rem;
+  text-decoration: none;
+  z-index: 9999;
+  font-weight: 600;
+}
+
+.skip-link:focus {
+  top: 0;
+}
+
+/* Keyboard focus styling */
+a:focus,
+button:focus,
+input:focus,
+textarea:focus,
+select:focus {
+  outline: 3px solid var(--creek-800);
+  outline-offset: 2px;
+}
+
+/* Remove default focus ring for mouse users */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid var(--creek-800);
+  outline-offset: 2px;
+}
+
+/* Ensure navigation links have visible focus */
+nav a:focus {
+  outline: 3px solid var(--wheat);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
 .container {
   max-width: 60rem;
   margin: 0 auto;

@@ -19,7 +19,7 @@
       flex: 1;
       min-width: 250px;
       padding: 0.75rem 1rem;
-      border: 2px solid var(--creek);
+      border: 2px solid var(--creek-800);
       border-radius: 0.5rem;
       font-size: 1rem;
       font-family: 'DM Sans', sans-serif;
@@ -47,9 +47,9 @@
     }
 
     .filter-btn.active {
-      background-color: var(--creek);
+      background-color: var(--creek-800);
       color: white;
-      border-color: var(--creek);
+      border-color: var(--creek-800);
     }
 
     .collection-stats {
@@ -70,7 +70,7 @@
     .stat-number {
       font-size: 2rem;
       font-weight: 700;
-      color: var(--creek);
+      color: var(--creek-800);
     }
 
     .stat-label {
@@ -91,7 +91,7 @@
       overflow: hidden;
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       transition: box-shadow 0.2s;
-      border-left: 4px solid var(--creek);
+      border-left: 4px solid var(--creek-800);
     }
 
     .accession-card:hover {
@@ -106,7 +106,7 @@
 
     .accession-id {
       font-size: 0.75rem;
-      color: var(--creek);
+      color: var(--creek-800);
       font-weight: 700;
       font-family: IBM Plex Mono, monospace;
       text-transform: uppercase;
@@ -149,7 +149,7 @@
 
     .meta-label {
       font-weight: 600;
-      color: var(--creek);
+      color: var(--creek-800);
       display: inline;
     }
 
@@ -193,7 +193,7 @@
     }
 
     .accession-link a {
-      color: var(--creek);
+      color: var(--creek-800);
       font-weight: 600;
       text-decoration: none;
     }
@@ -232,6 +232,7 @@
   </style>
 </head>
 <body>
+  <a href="#main" class="skip-link">Skip to main content</a>
   <header>
     <nav class="container">
       <a href="/" class="logo">The Joan Vermeulen Arboretum</a>
@@ -246,7 +247,7 @@
     </nav>
   </header>
 
-  <main>
+  <main id="main">
     <section class="hero">
       <div class="container">
         <h1>Plant Collection Database</h1>
