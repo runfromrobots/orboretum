@@ -102,8 +102,10 @@ nav a:focus {
 header {
   background-color: var(--forest-950);
   color: var(--wheat);
-  position: sticky;
+  position: fixed;
   top: 0;
+  left: 0;
+  right: 0;
   z-index: 50;
   box-shadow: 0 1px 3px rgba(0,0,0,0.1);
 }
@@ -137,6 +139,11 @@ nav a {
 
 nav a:hover {
   color: var(--creek-700);
+}
+
+/* Main content - account for fixed header */
+main {
+  padding-top: 3.5rem;
 }
 
 /* Hero Section */

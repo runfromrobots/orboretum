@@ -27,13 +27,60 @@
     .map-controls {
       position: absolute;
       top: 20px;
-      right: 20px;
+      left: 20px;
       background: white;
       border-radius: 0.5rem;
       box-shadow: 0 2px 8px rgba(0,0,0,0.15);
       padding: 1rem;
       z-index: 999;
-      min-width: 250px;
+      min-width: 280px;
+      max-width: 350px;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+      max-height: 600px;
+      overflow: hidden;
+    }
+
+    .map-controls.collapsed {
+      max-height: 45px;
+      padding: 0.5rem;
+    }
+
+    .map-controls-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .map-controls.collapsed .map-controls-header {
+      margin-bottom: 0;
+    }
+
+    .map-controls-toggle {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 1.2rem;
+      color: var(--forest-900);
+      padding: 0;
+      width: 24px;
+      height: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .map-controls-toggle:hover {
+      color: var(--creek-800);
+    }
+
+    .map-controls-toggle:focus {
+      outline: 2px solid var(--creek-800);
+      outline-offset: 2px;
+    }
+
+    .map-controls-content {
+      overflow: hidden;
     }
 
     .map-controls h3 {
@@ -216,29 +263,39 @@
           <div id="map"></div>
 
           <div class="map-controls">
-            <h2 style="font-size: 1rem; margin: 0 0 1rem 0;">Map Layers</h2>
-            <p style="font-size: 0.85rem; color: var(--forest-900); margin: 0 0 1rem 0; padding: 0.5rem; background: #f0f4f0; border-radius: 3px;">
-              📡 Click the icon at top-left to switch between base map imagery (satellite, topographic, etc.)
-            </p>
-            <div class="layer-toggle">
-              <input type="checkbox" id="trail-toggle" checked>
-              <label for="trail-toggle">Trail Route</label>
+            <div class="map-controls-header">
+              <h2 style="font-size: 1rem; margin: 0;">Map Layers</h2>
+              <button class="map-controls-toggle" id="toggle-controls" aria-label="Toggle map layers panel" aria-expanded="true" title="Close">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
             </div>
-            <div class="layer-toggle">
-              <input type="checkbox" id="boundary-toggle" checked>
-              <label for="boundary-toggle">Property Boundary</label>
-            </div>
-            <div class="layer-toggle">
-              <input type="checkbox" id="observations-toggle" checked>
-              <label for="observations-toggle">Plant Observations</label>
-            </div>
-            <div class="layer-toggle">
-              <input type="checkbox" id="features-toggle" checked>
-              <label for="features-toggle">Features</label>
-            </div>
-            <div class="layer-toggle">
-              <input type="checkbox" id="parcels-toggle" checked>
-              <label for="parcels-toggle">Arboretum Parcels</label>
+            <div class="map-controls-content">
+              <p style="font-size: 0.85rem; color: var(--forest-900); margin: 0 0 1rem 0; padding: 0.5rem; background: #f0f4f0; border-radius: 3px;">
+                📡 Click the icon at top-left to switch between base map imagery (satellite, topographic, etc.)
+              </p>
+              <div class="layer-toggle">
+                <input type="checkbox" id="trail-toggle" checked>
+                <label for="trail-toggle">Trail Route</label>
+              </div>
+              <div class="layer-toggle">
+                <input type="checkbox" id="boundary-toggle" checked>
+                <label for="boundary-toggle">Property Boundary</label>
+              </div>
+              <div class="layer-toggle">
+                <input type="checkbox" id="observations-toggle" checked>
+                <label for="observations-toggle">Plant Observations</label>
+              </div>
+              <div class="layer-toggle">
+                <input type="checkbox" id="features-toggle" checked>
+                <label for="features-toggle">Features</label>
+              </div>
+              <div class="layer-toggle">
+                <input type="checkbox" id="parcels-toggle" checked>
+                <label for="parcels-toggle">Arboretum Parcels</label>
+              </div>
             </div>
           </div>
 
@@ -567,6 +624,24 @@
         }
       });
 
+      // Map controls collapse toggle
+      const toggleBtn = document.getElementById('toggle-controls');
+      const mapControls = document.querySelector('.map-controls');
+
+      if (toggleBtn && mapControls) {
+        toggleBtn.addEventListener('click', () => {
+          const isCollapsed = mapControls.classList.contains('collapsed');
+          if (isCollapsed) {
+            mapControls.classList.remove('collapsed');
+            toggleBtn.setAttribute('aria-expanded', 'true');
+            toggleBtn.title = 'Close';
+          } else {
+            mapControls.classList.add('collapsed');
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            toggleBtn.title = 'Open';
+          }
+        });
+      }
 
     }
 
