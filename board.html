@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Board Members - The Joan Vermeulen Arboretum</title>
+  <meta name="description" content="Meet the board members and leadership team guiding The Joan Vermeulen Arboretum's mission and vision.">
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .board-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .board-member-card {
+      background-color: white;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: box-shadow 0.2s;
+      border-left: 4px solid var(--creek-800);
+    }
+
+    .board-member-card:hover {
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+    }
+
+    .board-member-image {
+      width: 100%;
+      height: 220px;
+      background-color: #f0f4f0;
+      overflow: hidden;
+    }
+
+    .board-member-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .board-member-info {
+      padding: 1.5rem;
+    }
+
+    .board-member-name {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--forest-900);
+      margin: 0 0 0.25rem 0;
+    }
+
+    .board-member-title {
+      font-size: 0.9rem;
+      color: var(--creek-800);
+      font-weight: 600;
+      margin: 0 0 1rem 0;
+    }
+
+    .board-member-bio {
+      font-size: 0.9rem;
+      color: var(--forest-800);
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .board-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  <header>
+    <nav class="container">
+      <a href="/" class="logo">The Joan Vermeulen Arboretum</a>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="visit.html">Visit</a></li>
+        <li><a href="map.html">Map</a></li>
+        <li><a href="foliage.html">Fall Foliage</a></li>
+        <li><a href="collections.html">Collections</a></li>
+        <li><a href="education.html">Education</a></li>
+        <li><a href="history.html">History</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container">
+        <h1>Board Members & Leadership</h1>
+        <p>Meet the team dedicated to preserving and sharing The Joan Vermeulen Arboretum</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Our Board of Directors</h2>
+        <p>The Joan Vermeulen Arboretum is guided by a dedicated board of directors working collaboratively to advance our mission of preservation, cultivation, and interpretation of native and heritage trees on this historically significant landscape.</p>
+
+        <div class="board-grid">
+          <div class="board-member-card">
+            <div class="board-member-image">
+              <img src="images/placeholder-board-member.jpg" alt="Board member photo" onerror="this.parentElement.style.background='#e8ede8'">
+            </div>
+            <div class="board-member-info">
+              <div class="board-member-name">Board Member Name</div>
+              <div class="board-member-title">Position / Role</div>
+              <p class="board-member-bio">Bio and background information about this board member's experience, expertise, and connection to the Arboretum's mission will be included here.</p>
+            </div>
+          </div>
+
+          <div class="board-member-card">
+            <div class="board-member-image">
+              <img src="images/placeholder-board-member.jpg" alt="Board member photo" onerror="this.parentElement.style.background='#e8ede8'">
+            </div>
+            <div class="board-member-info">
+              <div class="board-member-name">Board Member Name</div>
+              <div class="board-member-title">Position / Role</div>
+              <p class="board-member-bio">Bio and background information about this board member's experience, expertise, and connection to the Arboretum's mission will be included here.</p>
+            </div>
+          </div>
+
+          <div class="board-member-card">
+            <div class="board-member-image">
+              <img src="images/placeholder-board-member.jpg" alt="Board member photo" onerror="this.parentElement.style.background='#e8ede8'">
+            </div>
+            <div class="board-member-info">
+              <div class="board-member-name">Board Member Name</div>
+              <div class="board-member-title">Position / Role</div>
+              <p class="board-member-bio">Bio and background information about this board member's experience, expertise, and connection to the Arboretum's mission will be included here.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Our Advisory Council</h2>
+        <p>The Arboretum benefits from the guidance and expertise of an advisory council of specialists in forestry, horticulture, Indigenous history, education, and conservation:</p>
+
+        <ul style="columns: 2; column-gap: 2rem; list-style-position: inside;">
+          <li>Name, Title / Expertise</li>
+          <li>Name, Title / Expertise</li>
+          <li>Name, Title / Expertise</li>
+          <li>Name, Title / Expertise</li>
+          <li>Name, Title / Expertise</li>
+          <li>Name, Title / Expertise</li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <h2>Get Involved</h2>
+        <p>The Joan Vermeulen Arboretum is building something meaningful and we're seeking dedicated volunteers, donors, and future board members who share our conservation vision.</p>
+        <div style="margin-top: 2rem;">
+          <a href="contact.html" class="btn btn-primary">Join Our Community</a>
+          <a href="/" class="btn btn-secondary" style="margin-left: 1rem;">Learn More</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>The Joan Vermeulen Arboretum preserves, cultivates, and interprets native and heritage trees on a historically significant landscape in the Mohawk Valley.</p>
+      <div class="footer-bottom">
+        <p>472 Anderson Road, Sprakers, NY</p>
+        <p>&copy; <span id="year">2024</span> The Joan Vermeulen Arboretum</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

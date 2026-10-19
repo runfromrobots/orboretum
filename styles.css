@@ -733,6 +733,71 @@ footer p {
   border-bottom: none;
 }
 
+/* Metal Detecting Gallery */
+.metal-detecting-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.metal-find-card {
+  background-color: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.metal-find-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transform: translateY(-2px);
+}
+
+.metal-find-image {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  background-color: #f0f4f0;
+}
+
+.metal-find-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.metal-find-info {
+  padding: 1.5rem;
+}
+
+.metal-find-info h4 {
+  margin: 0 0 1rem 0;
+  color: var(--forest-900);
+  font-size: 1.1rem;
+}
+
+.metal-find-label {
+  font-size: 0.9rem;
+  color: var(--forest-800);
+  margin: 0.5rem 0;
+  line-height: 1.4;
+}
+
+.metal-find-label strong {
+  color: var(--creek-800);
+  font-weight: 600;
+}
+
+.metal-find-description {
+  font-size: 0.9rem;
+  color: var(--forest-800);
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0e0e0;
+}
+
 /* Responsive */
 @media (max-width: 768px) {
   nav ul {
